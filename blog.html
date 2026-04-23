@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Physician Blog — Stethescope</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<style>
+  body{font-family:'Inter',sans-serif;background:#f8f9ff;color:#0b1c30}
+  h1,h2,h3,h4,.font-head{font-family:'Manrope',sans-serif}
+  .grad-primary{background:linear-gradient(135deg,#1A237E 0%,#08005E 100%)}
+  .grad-mesh{background:radial-gradient(at 10% 10%,rgba(193,193,255,0.35) 0,transparent 50%),radial-gradient(at 95% 15%,rgba(98,253,185,0.25) 0,transparent 50%),radial-gradient(at 50% 90%,rgba(51,215,254,0.18) 0,transparent 50%),#f8f9ff}
+  .card{background:rgba(255,255,255,0.75);backdrop-filter:blur(12px);border:1px solid #c7c5d3;box-shadow:0 4px 24px rgba(8,0,94,0.06);transition:all .25s}
+  .card:hover{border-color:#006c48;box-shadow:0 10px 32px rgba(8,0,94,0.12);transform:translateY(-3px)}
+  .chip{font-size:11px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;padding:4px 10px;border-radius:9999px}
+  .nav-link{color:#475569;font-weight:500;transition:color .2s}
+  .nav-link:hover{color:#08005E}
+  .cover{aspect-ratio:16/9;border-radius:14px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.4)}
+  .field{width:100%;padding:12px 14px;border-radius:12px;border:1px solid #c7c5d3;background:#fff;font-size:14px}
+  .field:focus{outline:none;border-color:#006c48;box-shadow:0 0 0 3px rgba(0,108,72,0.12)}
+</style>
+</head>
+<body class="grad-mesh min-h-screen">
+
+<header class="sticky top-0 z-50 backdrop-blur-md bg-white/80 border-b border-slate-200">
+  <div class="max-w-7xl mx-auto px-5 py-3 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-full grad-primary flex items-center justify-center text-white font-bold font-head shadow-lg">S</div>
+      <div class="font-head font-extrabold text-[#08005E] text-xl leading-none">Stethescope</div>
+    </a>
+    <nav class="hidden lg:flex items-center gap-7 text-sm">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="subscriptions.html" class="nav-link">Subscriptions</a>
+      <a href="services.html" class="nav-link">Services</a>
+      <a href="videos.html" class="nav-link">Videos</a>
+      <a href="contact.html" class="nav-link">Contact Us</a>
+      <a href="profile.html" class="nav-link">Physician Profile</a>
+      <a href="blog.html" class="nav-link text-[#08005E] font-semibold">Physician Blog</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <a href="signin.html" class="hidden sm:inline-flex items-center gap-2 text-sm font-semibold text-[#08005E] px-4 py-2 hover:bg-slate-100 rounded-lg">Sign In</a>
+      <a href="signup.html" class="inline-flex items-center gap-2 grad-primary text-white px-4 py-2 rounded-lg font-semibold text-sm hover:opacity-90">Get Started</a>
+      <button data-action="menu" class="lg:hidden p-2 text-[#08005E]"><span class="material-symbols-outlined">menu</span></button>
+    </div>
+  </div>
+</header>
+
+<section class="max-w-7xl mx-auto px-6 pt-14 pb-8">
+  <div class="card rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-6" style="background:linear-gradient(135deg,#eff4ff 0%,#e8fff6 100%)">
+    <div>
+      <div class="chip bg-[#c1c1ff]/60 text-[#08005E] inline-block mb-3">Physician Blog</div>
+      <h1 class="font-head font-extrabold text-4xl md:text-5xl">Thoughts from India's physicians</h1>
+      <p class="text-slate-500 mt-3 max-w-xl">Clinical updates, practice management and patient-care essays written by doctors, for doctors.</p>
+    </div>
+    <button data-action="blog-post" class="inline-flex items-center gap-2 grad-primary text-white px-6 py-3 rounded-xl font-bold hover:opacity-90 whitespace-nowrap">
+      <span class="material-symbols-outlined">edit</span> Compose
+    </button>
+  </div>
+</section>
+
+<section class="max-w-7xl mx-auto px-6 pb-12">
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+    <article class="card rounded-2xl p-5">
+      <div class="cover" style="background:linear-gradient(135deg,#1A237E,#006c48)"><span class="material-symbols-outlined" style="font-size:64px">monitor_heart</span></div>
+      <div class="mt-4">
+        <div class="chip bg-[#62fdb9]/40 text-[#00734d] inline-block mb-2">Diabetes</div>
+        <h3 class="font-head font-bold text-lg leading-tight">Managing Type 2 Diabetes in 2026</h3>
+        <p class="text-sm text-slate-500 mt-2">New SGLT2 combinations, diet, and what India's new guidelines change for your OPD.</p>
+        <div class="flex items-center gap-3 mt-4">
+          <div class="w-8 h-8 rounded-full bg-[#c1c1ff]/60 flex items-center justify-center text-[#08005E] font-bold text-xs">AM</div>
+          <div class="text-xs text-slate-500"><strong class="text-[#0b1c30]">Dr. Anil Mehta</strong> · Apr 22, 2026 · 6 min read</div>
+        </div>
+        <button data-action="toast" data-payload="Opening article..." class="mt-4 inline-flex items-center gap-1 text-sm text-[#006c48] font-semibold">Read more <span class="material-symbols-outlined text-base">arrow_forward</span></button>
+      </div>
+    </article>
+
+    <article class="card rounded-2xl p-5">
+      <div class="cover" style="background:linear-gradient(135deg,#08005E,#33d7fe)"><span class="material-symbols-outlined" style="font-size:64px">videocam</span></div>
+      <div class="mt-4">
+        <div class="chip bg-[#33d7fe]/40 text-[#004e5e] inline-block mb-2">Tele-medicine</div>
+        <h3 class="font-head font-bold text-lg leading-tight">The future of tele-medicine in India</h3>
+        <p class="text-sm text-slate-500 mt-2">Tier-2 adoption, DPDP compliance, and what the next five years look like.</p>
+        <div class="flex items-center gap-3 mt-4">
+          <div class="w-8 h-8 rounded-full bg-[#62fdb9]/40 flex items-center justify-center text-[#00734d] font-bold text-xs">PR</div>
+          <div class="text-xs text-slate-500"><strong class="text-[#0b1c30]">Dr. Priya Raghavan</strong> · Apr 18, 2026 · 8 min read</div>
+        </div>
+        <button data-action="toast" data-payload="Opening article..." class="mt-4 inline-flex items-center gap-1 text-sm text-[#006c48] font-semibold">Read more <span class="material-symbols-outlined text-base">arrow_forward</span></button>
+      </div>
+    </article>
+
+    <article class="card rounded-2xl p-5">
+      <div class="cover" style="background:linear-gradient(135deg,#006c48,#62fdb9)"><span class="material-symbols-outlined" style="font-size:64px">favorite</span></div>
+      <div class="mt-4">
+        <div class="chip bg-[#c1c1ff]/60 text-[#08005E] inline-block mb-2">Patient trust</div>
+        <h3 class="font-head font-bold text-lg leading-tight">Building patient trust online</h3>
+        <p class="text-sm text-slate-500 mt-2">Why a verified physician profile is the new stethoscope.</p>
+        <div class="flex items-center gap-3 mt-4">
+          <div class="w-8 h-8 rounded-full bg-[#ffdad6] flex items-center justify-center text-[#93000a] font-bold text-xs">SB</div>
+          <div class="text-xs text-slate-500"><strong class="text-[#0b1c30]">Dr. Sanjana Bhat</strong> · Apr 12, 2026 · 5 min read</div>
+        </div>
+        <button data-action="toast" data-payload="Opening article..." class="mt-4 inline-flex items-center gap-1 text-sm text-[#006c48] font-semibold">Read more <span class="material-symbols-outlined text-base">arrow_forward</span></button>
+      </div>
+    </article>
+
+    <article class="card rounded-2xl p-5">
+      <div class="cover" style="background:linear-gradient(135deg,#25D366,#00734d)"><span class="material-symbols-outlined" style="font-size:64px">chat</span></div>
+      <div class="mt-4">
+        <div class="chip bg-[#62fdb9]/40 text-[#00734d] inline-block mb-2">WhatsApp</div>
+        <h3 class="font-head font-bold text-lg leading-tight">How WhatsApp is changing prescriptions</h3>
+        <p class="text-sm text-slate-500 mt-2">Compliance, adherence and why paper is finally losing.</p>
+        <div class="flex items-center gap-3 mt-4">
+          <div class="w-8 h-8 rounded-full bg-[#33d7fe]/50 flex items-center justify-center text-[#004e5e] font-bold text-xs">RK</div>
+          <div class="text-xs text-slate-500"><strong class="text-[#0b1c30]">Dr. Rahul Kapoor</strong> · Apr 8, 2026 · 4 min read</div>
+        </div>
+        <button data-action="toast" data-payload="Opening article..." class="mt-4 inline-flex items-center gap-1 text-sm text-[#006c48] font-semibold">Read more <span class="material-symbols-outlined text-base">arrow_forward</span></button>
+      </div>
+    </article>
+
+    <article class="card rounded-2xl p-5">
+      <div class="cover" style="background:linear-gradient(135deg,#93000a,#ffdad6)"><span class="material-symbols-outlined" style="font-size:64px">ecg_heart</span></div>
+      <div class="mt-4">
+        <div class="chip bg-[#ffdad6] text-[#93000a] inline-block mb-2">Cardiology</div>
+        <h3 class="font-head font-bold text-lg leading-tight">Hypertension: latest guidelines</h3>
+        <p class="text-sm text-slate-500 mt-2">Updated thresholds, home BP monitoring and lifestyle wins.</p>
+        <div class="flex items-center gap-3 mt-4">
+          <div class="w-8 h-8 rounded-full bg-[#62fdb9]/40 flex items-center justify-center text-[#00734d] font-bold text-xs">KN</div>
+          <div class="text-xs text-slate-500"><strong class="text-[#0b1c30]">Dr. Kavita Nair</strong> · Apr 3, 2026 · 7 min read</div>
+        </div>
+        <button data-action="toast" data-payload="Opening article..." class="mt-4 inline-flex items-center gap-1 text-sm text-[#006c48] font-semibold">Read more <span class="material-symbols-outlined text-base">arrow_forward</span></button>
+      </div>
+    </article>
+
+    <article class="card rounded-2xl p-5">
+      <div class="cover" style="background:linear-gradient(135deg,#1A237E,#c1c1ff)"><span class="material-symbols-outlined" style="font-size:64px">local_hospital</span></div>
+      <div class="mt-4">
+        <div class="chip bg-[#c1c1ff]/60 text-[#08005E] inline-block mb-2">Practice</div>
+        <h3 class="font-head font-bold text-lg leading-tight">Running a modern clinic</h3>
+        <p class="text-sm text-slate-500 mt-2">Staff, SOPs, tech stack — the checklist every new practice needs.</p>
+        <div class="flex items-center gap-3 mt-4">
+          <div class="w-8 h-8 rounded-full bg-[#c1c1ff]/60 flex items-center justify-center text-[#08005E] font-bold text-xs">VS</div>
+          <div class="text-xs text-slate-500"><strong class="text-[#0b1c30]">Dr. Vikram Shetty</strong> · Mar 28, 2026 · 9 min read</div>
+        </div>
+        <button data-action="toast" data-payload="Opening article..." class="mt-4 inline-flex items-center gap-1 text-sm text-[#006c48] font-semibold">Read more <span class="material-symbols-outlined text-base">arrow_forward</span></button>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section id="new" class="max-w-4xl mx-auto px-6 pb-20">
+  <div class="card rounded-3xl p-8">
+    <div class="chip bg-[#62fdb9]/40 text-[#00734d] inline-block mb-3">Compose</div>
+    <h2 class="font-head font-extrabold text-3xl">Compose a new post</h2>
+    <p class="text-slate-500 mt-2">Share a clinical insight or practice tip with the Stethescope community.</p>
+    <div class="mt-6 space-y-4">
+      <div><label class="block text-sm font-semibold mb-2">Title</label><input type="text" placeholder="Give your post a clear, compelling title…" class="field"/></div>
+      <div><label class="block text-sm font-semibold mb-2">Body</label><textarea rows="8" placeholder="Write your post here…" class="field"></textarea></div>
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <div class="text-xs text-slate-500 flex items-center gap-1"><span class="material-symbols-outlined text-base">info</span> Published posts appear under your physician profile.</div>
+        <div class="flex gap-2">
+          <button data-action="toast" data-payload="Draft saved" class="bg-white text-[#08005E] border-2 border-[#006c48] px-5 py-2.5 rounded-xl font-bold hover:bg-slate-50">Save draft</button>
+          <button data-action="toast" data-payload="Post published successfully" data-type="success" class="grad-primary text-white px-5 py-2.5 rounded-xl font-bold hover:opacity-90">Publish</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="bg-[#0b1c30] text-white">
+  <div class="max-w-7xl mx-auto px-6 py-14 grid md:grid-cols-4 gap-8">
+    <div>
+      <div class="flex items-center gap-2 mb-4">
+        <div class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center font-bold font-head">S</div>
+        <div class="font-head font-extrabold text-lg">Stethescope</div>
+      </div>
+      <p class="text-sm text-white/60">India's digital clinic platform for physicians.</p>
+    </div>
+    <div>
+      <h5 class="font-head font-bold mb-3 text-sm uppercase tracking-widest">Product</h5>
+      <ul class="space-y-2 text-sm text-white/70">
+        <li><a href="subscriptions.html" class="hover:text-white">Subscriptions</a></li>
+        <li><a href="services.html" class="hover:text-white">Services</a></li>
+        <li><a href="videos.html" class="hover:text-white">Videos</a></li>
+        <li><a href="blog.html" class="hover:text-white">Physician Blog</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5 class="font-head font-bold mb-3 text-sm uppercase tracking-widest">Account</h5>
+      <ul class="space-y-2 text-sm text-white/70">
+        <li><a href="signin.html" class="hover:text-white">Sign In</a></li>
+        <li><a href="signup.html" class="hover:text-white">Sign Up</a></li>
+        <li><a href="profile.html" class="hover:text-white">Physician Profile</a></li>
+        <li><a href="dashboard.html" class="hover:text-white">Dashboard</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5 class="font-head font-bold mb-3 text-sm uppercase tracking-widest">Contact</h5>
+      <ul class="space-y-2 text-sm text-white/70">
+        <li><a href="contact.html" class="hover:text-white">Contact Us</a></li>
+        <li><a href="#" data-action="email" data-payload="support@stethescope.biz" class="hover:text-white">support@stethescope.biz</a></li>
+        <li><a href="#" data-action="call" data-payload="+919876543210" class="hover:text-white">+91 98765 43210</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-white/10 py-5 text-center text-xs text-white/50">© 2026 Stethescope. All rights reserved · HSN:997331</div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

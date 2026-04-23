@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Appointment &amp; Clinic Calendar</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#000000",
+                        "surface-tint": "#5555a7",
+                        "on-primary": "#ffffff",
+                        "on-surface": "#0b1c30",
+                        "on-tertiary-fixed-variant": "#004e5e",
+                        "secondary-fixed": "#62fdb9",
+                        "surface-bright": "#f8f9ff",
+                        "inverse-primary": "#c1c1ff",
+                        "surface-container-low": "#eff4ff",
+                        "on-surface-variant": "#464651",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed-variant": "#005235",
+                        "surface-variant": "#d3e4fe",
+                        "surface-container-highest": "#d3e4fe",
+                        "surface-container-high": "#dce9ff",
+                        "primary-container": "#0e0761",
+                        "on-primary-fixed-variant": "#3d3d8d",
+                        "secondary-container": "#62fdb9",
+                        "background": "#f8f9ff",
+                        "tertiary": "#000000",
+                        "primary-fixed-dim": "#c1c1ff",
+                        "error-container": "#ffdad6",
+                        "on-secondary": "#ffffff",
+                        "outline-variant": "#c7c5d3",
+                        "on-tertiary-container": "#0090ac",
+                        "surface-dim": "#cbdbf5",
+                        "secondary": "#006c48",
+                        "on-tertiary-fixed": "#001f27",
+                        "primary-fixed": "#e2dfff",
+                        "on-secondary-container": "#00734d",
+                        "surface": "#f8f9ff",
+                        "on-primary-fixed": "#0e0761",
+                        "tertiary-fixed-dim": "#33d7fe",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-error-container": "#93000a",
+                        "on-primary-container": "#7b7bcf",
+                        "surface-container": "#e5eeff",
+                        "on-secondary-fixed": "#002113",
+                        "on-background": "#0b1c30",
+                        "tertiary-fixed": "#b1ecff",
+                        "outline": "#777682",
+                        "inverse-surface": "#213145",
+                        "tertiary-container": "#001f27",
+                        "secondary-fixed-dim": "#3ee09f",
+                        "error": "#ba1a1a"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "grid-gutter": "24px",
+                        "xs": "4px",
+                        "xl": "80px",
+                        "md": "24px",
+                        "base": "8px",
+                        "sm": "12px",
+                        "grid-margin": "32px",
+                        "lg": "48px"
+                    },
+                    fontFamily: {
+                        "headline-lg": ["Manrope"],
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Manrope"],
+                        "data-tabular": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Manrope"],
+                        "body-md": ["Inter"]
+                    },
+                    fontSize: {
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "data-tabular": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col md:flex-row antialiased">
+<!-- Navigation Drawer (Desktop) -->
+<aside class="hidden md:flex flex-col fixed inset-y-0 left-0 z-[60] bg-surface-container-lowest h-full w-[280px] border-r divide-y divide-surface-container-low shadow-none transition-all duration-300 ease-out">
+<div class="p-6">
+<h1 class="text-lg font-black text-primary-container">Practice Manager</h1>
+<div class="mt-6 flex items-center gap-4">
+<img alt="Dr. Smith" class="w-12 h-12 rounded-full object-cover shadow-sm" data-alt="Portrait of a smiling male doctor in a white coat" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvJkGw3aGq64HhctRZo9NEUxSsnfSTqEcd1fizLZUa-RAwpSy1QZX8HNk6nQu3eIEjiZG9OdzbZ818nwwRl9t_tKzIpORPWk_Ysf8EXiqkcU888ssqy3QVA6j9FQEz5zDqZocgqsdJdf7aqQFDDEqBc59d0uwxoV0RdXUa2FH0ENiKojne0WErf4a1J53qaXhetaMvAtuPxmPIcNOa_NJai1XrFSR15M7j-PZRWypjuRT-BFqKbLBfKHbnycYZbK8jIYQ-Vy966js"/>
+<div>
+<h2 class="font-data-tabular text-on-surface">Dr. Julian Smith</h2>
+<p class="font-label-sm text-on-surface-variant">Chief Medical Officer</p>
+<p class="font-label-sm text-outline">North Clinic</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 overflow-y-auto py-4">
+<ul class="space-y-1">
+<li><a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-surface-container hover:translate-x-1 transition-transform" href="dashboard.html"><span class="material-symbols-outlined">dashboard</span><span class="font-label-sm">Dashboard</span></a></li>
+<li><a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-surface-container hover:translate-x-1 transition-transform" href="patients.html"><span class="material-symbols-outlined">group</span><span class="font-label-sm">Patients</span></a></li>
+<li><a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-surface-container hover:translate-x-1 transition-transform" href="prescription.html"><span class="material-symbols-outlined">edit_note</span><span class="font-label-sm">Prescriptions</span></a></li>
+<li><a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-surface-container hover:translate-x-1 transition-transform" href="teleconsult.html"><span class="material-symbols-outlined">videocam</span><span class="font-label-sm">Tele-Consult</span></a></li>
+<li><a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-surface-container hover:translate-x-1 transition-transform" href="chronic-care.html"><span class="material-symbols-outlined">monitor_heart</span><span class="font-label-sm">Chronic Care</span></a></li>
+<li><a class="flex items-center gap-3 bg-surface-container text-primary-container font-bold px-4 py-3 border-l-4 border-primary-container hover:translate-x-1 transition-transform" href="calendar.html"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">calendar_month</span><span class="font-label-sm">Calendar</span></a></li>
+<li><a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-surface-container hover:translate-x-1 transition-transform" href="revenue.html"><span class="material-symbols-outlined">payments</span><span class="font-label-sm">Revenue</span></a></li>
+<li><a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-surface-container hover:translate-x-1 transition-transform" href="profile.html"><span class="material-symbols-outlined">account_circle</span><span class="font-label-sm">Profile</span></a></li>
+</ul>
+</nav>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col md:ml-[280px] min-h-screen">
+<!-- TopAppBar (Mobile & Desktop) -->
+<header class="flex justify-between items-center w-full px-6 py-4 max-w-full bg-surface-container-lowest/80 backdrop-blur-md text-primary-container font-headline-lg tracking-tight docked full-width top-0 sticky border-b border-surface-container-low shadow-sm shadow-primary-container/5 transition-all duration-200 ease-in-out z-50 md:hidden">
+<div class="flex items-center gap-4">
+<button class="md:hidden text-on-surface-variant hover:bg-surface-container p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<a href="dashboard.html" class="text-xl font-bold text-primary-container">Practice Manager</a>
+</div>
+<img alt="Doctor Profile" class="w-10 h-10 rounded-full object-cover shadow-sm" data-alt="Portrait of a smiling male doctor in a white coat" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJGzyR04JLGGwlH63MQFhpc-ncFoLD6rIxnaTLE8-_6aSa1DaVGncMXTqv6swN8dhU6kWsNkPZFQSCNc8wWSlbqwDnNAzkceCd1r37S49xwHpy301GKGMqZhnKwqYWUi5Cqyp1BfR84wGZXIUfgJ7CG6E-p8fR1PSYCbHlHdL4yNgbjJQC9m8UTNnSuv6cgPL-jitrhhtfjCr0iaImcbqaNLBlmKEUAOhxHWTdpv1mWHK8_C_rw1KzfRA-VEM7BSHD99lyjLkh28c"/>
+</header>
+<!-- Page Header -->
+<div class="px-6 md:px-grid-margin py-8">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+<div>
+<h1 class="font-headline-lg text-on-surface">Schedule</h1>
+<p class="font-body-md text-on-surface-variant mt-1">Manage your upcoming physical and virtual consultations.</p>
+</div>
+<div class="flex gap-3">
+<button class="bg-surface-container-lowest border-1.5 border-on-tertiary-container text-on-tertiary-container font-label-sm px-4 py-2 rounded-lg hover:bg-surface-container transition-colors flex items-center gap-2 shadow-[0_4px_20px_rgba(8,0,94,0.04)]">
+<span class="material-symbols-outlined text-[18px]">filter_list</span>
+                        Filter View
+                    </button>
+<button class="bg-gradient-to-b from-[#1A237E] to-[#08005E] text-on-primary font-label-sm px-5 py-2 rounded-lg hover:opacity-90 transition-opacity flex items-center gap-2 shadow-md shadow-primary-container/20">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                        New Appointment
+                    </button>
+</div>
+</div>
+</div>
+<!-- Weekly Calendar Strip -->
+<div class="px-6 md:px-grid-margin pb-6">
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-[0_4px_20px_rgba(8,0,94,0.04)] p-4 flex justify-between items-center overflow-x-auto gap-4 hide-scrollbar">
+<div class="flex flex-col items-center justify-center min-w-[60px] p-2 rounded-lg text-on-surface-variant hover:bg-surface-container cursor-pointer transition-colors">
+<span class="font-label-sm uppercase text-outline">Mon</span>
+<span class="font-headline-md mt-1">12</span>
+</div>
+<div class="flex flex-col items-center justify-center min-w-[60px] p-2 rounded-lg text-on-surface-variant hover:bg-surface-container cursor-pointer transition-colors">
+<span class="font-label-sm uppercase text-outline">Tue</span>
+<span class="font-headline-md mt-1">13</span>
+</div>
+<div class="flex flex-col items-center justify-center min-w-[60px] p-2 rounded-lg bg-surface-container-high border-b-2 border-primary-container text-primary-container shadow-sm cursor-pointer">
+<span class="font-label-sm uppercase font-bold text-primary-container">Wed</span>
+<span class="font-headline-md mt-1 font-bold">14</span>
+<div class="w-1.5 h-1.5 rounded-full bg-primary-container mt-1"></div>
+</div>
+<div class="flex flex-col items-center justify-center min-w-[60px] p-2 rounded-lg text-on-surface-variant hover:bg-surface-container cursor-pointer transition-colors">
+<span class="font-label-sm uppercase text-outline">Thu</span>
+<span class="font-headline-md mt-1">15</span>
+<div class="w-1.5 h-1.5 rounded-full bg-outline-variant mt-1"></div>
+</div>
+<div class="flex flex-col items-center justify-center min-w-[60px] p-2 rounded-lg text-on-surface-variant hover:bg-surface-container cursor-pointer transition-colors">
+<span class="font-label-sm uppercase text-outline">Fri</span>
+<span class="font-headline-md mt-1">16</span>
+<div class="w-1.5 h-1.5 rounded-full bg-outline-variant mt-1"></div>
+</div>
+<div class="flex flex-col items-center justify-center min-w-[60px] p-2 rounded-lg text-on-surface-variant hover:bg-surface-container cursor-pointer transition-colors opacity-50">
+<span class="font-label-sm uppercase text-outline">Sat</span>
+<span class="font-headline-md mt-1">17</span>
+</div>
+<div class="flex flex-col items-center justify-center min-w-[60px] p-2 rounded-lg text-on-surface-variant hover:bg-surface-container cursor-pointer transition-colors opacity-50">
+<span class="font-label-sm uppercase text-outline">Sun</span>
+<span class="font-headline-md mt-1">18</span>
+</div>
+</div>
+</div>
+<!-- Appointment List Canvas -->
+<div class="px-6 md:px-grid-margin flex-1 pb-24 md:pb-8">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-grid-gutter">
+<!-- Main Schedule Timeline -->
+<div class="lg:col-span-8 space-y-4 relative">
+<!-- Time indicator line (optional conceptual element) -->
+<div class="absolute left-[88px] top-0 bottom-0 w-px bg-surface-container-low hidden sm:block"></div>
+<!-- Appointment Card: Virtual -->
+<div class="flex flex-col sm:flex-row gap-4 group">
+<div class="w-20 pt-4 flex-shrink-0 text-right pr-4 hidden sm:block">
+<span class="font-data-tabular text-on-surface-variant block">09:00</span>
+<span class="font-label-sm text-outline">AM</span>
+</div>
+<div class="flex-1 bg-surface-container-lowest rounded-xl border border-outline-variant shadow-[0_4px_20px_rgba(8,0,94,0.04)] p-5 hover:shadow-md transition-shadow relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-secondary"></div>
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center gap-2">
+<span class="bg-secondary-container text-on-secondary-container px-2 py-1 rounded-md font-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">videocam</span>
+                                        Virtual
+                                    </span>
+<span class="font-label-sm text-outline flex items-center gap-1 sm:hidden">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+                                        09:00 AM - 09:30 AM
+                                    </span>
+</div>
+<span class="font-label-sm text-outline hidden sm:flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+                                    30 min
+                                </span>
+</div>
+<h3 class="font-headline-md text-on-surface mb-1">Sarah Jenkins</h3>
+<p class="font-body-md text-on-surface-variant mb-4">Initial Consultation - Migraine Assessment</p>
+<div class="flex items-center justify-between border-t border-surface-container-low pt-4 mt-4">
+<div class="flex gap-4">
+<button class="text-primary-container hover:text-surface-tint font-label-sm flex items-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-[18px]">folder_open</span>
+                                        View File
+                                    </button>
+</div>
+<button class="bg-secondary text-on-secondary font-label-sm px-4 py-2 rounded-lg hover:bg-on-secondary-fixed-variant transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">call</span>
+                                    Join Call
+                                </button>
+</div>
+</div>
+</div>
+<!-- Appointment Card: In-Clinic -->
+<div class="flex flex-col sm:flex-row gap-4 group">
+<div class="w-20 pt-4 flex-shrink-0 text-right pr-4 hidden sm:block">
+<span class="font-data-tabular text-on-surface block">10:00</span>
+<span class="font-label-sm text-outline">AM</span>
+</div>
+<div class="flex-1 bg-surface-container-lowest rounded-xl border border-outline-variant shadow-[0_4px_20px_rgba(8,0,94,0.04)] p-5 hover:shadow-md transition-shadow relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary-container"></div>
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center gap-2">
+<span class="bg-surface-container text-primary-container px-2 py-1 rounded-md font-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">local_hospital</span>
+                                        In-Clinic
+                                    </span>
+<span class="font-label-sm text-outline flex items-center gap-1 sm:hidden">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+                                        10:00 AM - 10:45 AM
+                                    </span>
+</div>
+<span class="font-label-sm text-outline hidden sm:flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+                                    45 min
+                                </span>
+</div>
+<h3 class="font-headline-md text-on-surface mb-1">Robert Chen</h3>
+<p class="font-body-md text-on-surface-variant mb-4">Follow-up: Post-op Examination (Room 3)</p>
+<div class="flex items-center justify-between border-t border-surface-container-low pt-4 mt-4">
+<div class="flex gap-4">
+<button class="text-primary-container hover:text-surface-tint font-label-sm flex items-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-[18px]">folder_open</span>
+                                        View File
+                                    </button>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">meeting_room</span>
+<span class="font-label-sm">Room 3</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Contextual Sidebar (Desktop only) -->
+<div class="hidden lg:block lg:col-span-4 space-y-6">
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-[0_4px_20px_rgba(8,0,94,0.04)] p-5">
+<h3 class="font-headline-md text-on-surface mb-4">Today's Summary</h3>
+<div class="space-y-4">
+<div class="flex justify-between items-center p-3 bg-surface-container-low rounded-lg">
+<span class="font-data-tabular text-on-surface-variant">Total Appointments</span>
+<span class="font-headline-md text-primary-container">8</span>
+</div>
+<div class="flex justify-between items-center p-3 bg-secondary-container/20 rounded-lg">
+<span class="font-data-tabular text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-secondary">videocam</span>
+                                    Virtual
+                                </span>
+<span class="font-headline-md text-secondary">3</span>
+</div>
+<div class="flex justify-between items-center p-3 bg-surface-container rounded-lg">
+<span class="font-data-tabular text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary-container">local_hospital</span>
+                                    In-Clinic
+                                </span>
+<span class="font-headline-md text-primary-container">5</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 py-2 pb-safe bg-surface-container-lowest/90 backdrop-blur-lg border-t border-surface-container-low shadow-[0_-4px_20px_rgba(8,0,94,0.04)] z-50 rounded-t-lg">
+<a class="flex flex-col items-center justify-center text-outline px-3 py-1 hover:text-primary-container scale-95 active:scale-90 transition-transform" href="dashboard.html">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-sm uppercase tracking-wider mt-1 text-[10px]">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline px-3 py-1 hover:text-primary-container scale-95 active:scale-90 transition-transform" href="patients.html">
+<span class="material-symbols-outlined">person_search</span>
+<span class="font-label-sm uppercase tracking-wider mt-1 text-[10px]">Patients</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline px-3 py-1 hover:text-primary-container scale-95 active:scale-90 transition-transform" href="prescription.html">
+<span class="material-symbols-outlined">edit_note</span>
+<span class="font-label-sm uppercase tracking-wider mt-1 text-[10px]">Scripts</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-surface-container-high text-primary-container rounded-lg px-3 py-1 scale-95 active:scale-90 transition-transform" href="calendar.html">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">calendar_month</span>
+<span class="font-label-sm uppercase tracking-wider mt-1 text-[10px]">Calendar</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline px-3 py-1 hover:text-primary-container scale-95 active:scale-90 transition-transform" href="profile.html">
+<span class="material-symbols-outlined">menu</span>
+<span class="font-label-sm uppercase tracking-wider mt-1 text-[10px]">More</span>
+</a>
+</nav>
+<!-- Mobile FAB for quick scheduling -->
+<button class="md:hidden fixed bottom-20 right-6 w-14 h-14 bg-gradient-to-b from-[#1A237E] to-[#08005E] text-on-primary rounded-full shadow-lg flex items-center justify-center hover:opacity-90 transition-opacity z-40">
+<span class="material-symbols-outlined text-[24px]">add</span>
+</button>
+</body></html>

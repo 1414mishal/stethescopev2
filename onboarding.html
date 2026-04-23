@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Physician Onboarding</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#000000",
+                        "surface-tint": "#5555a7",
+                        "on-primary": "#ffffff",
+                        "on-surface": "#0b1c30",
+                        "on-tertiary-fixed-variant": "#004e5e",
+                        "secondary-fixed": "#62fdb9",
+                        "surface-bright": "#f8f9ff",
+                        "inverse-primary": "#c1c1ff",
+                        "surface-container-low": "#eff4ff",
+                        "on-surface-variant": "#464651",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed-variant": "#005235",
+                        "surface-variant": "#d3e4fe",
+                        "surface-container-highest": "#d3e4fe",
+                        "surface-container-high": "#dce9ff",
+                        "primary-container": "#0e0761",
+                        "on-primary-fixed-variant": "#3d3d8d",
+                        "secondary-container": "#62fdb9",
+                        "background": "#f8f9ff",
+                        "tertiary": "#000000",
+                        "primary-fixed-dim": "#c1c1ff",
+                        "error-container": "#ffdad6",
+                        "on-secondary": "#ffffff",
+                        "outline-variant": "#c7c5d3",
+                        "on-tertiary-container": "#0090ac",
+                        "surface-dim": "#cbdbf5",
+                        "secondary": "#006c48",
+                        "on-tertiary-fixed": "#001f27",
+                        "primary-fixed": "#e2dfff",
+                        "on-secondary-container": "#00734d",
+                        "surface": "#f8f9ff",
+                        "on-primary-fixed": "#0e0761",
+                        "tertiary-fixed-dim": "#33d7fe",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-error-container": "#93000a",
+                        "on-primary-container": "#7b7bcf",
+                        "surface-container": "#e5eeff",
+                        "on-secondary-fixed": "#002113",
+                        "on-background": "#0b1c30",
+                        "tertiary-fixed": "#b1ecff",
+                        "outline": "#777682",
+                        "inverse-surface": "#213145",
+                        "tertiary-container": "#001f27",
+                        "secondary-fixed-dim": "#3ee09f",
+                        "error": "#ba1a1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "grid-gutter": "24px",
+                        "xs": "4px",
+                        "xl": "80px",
+                        "md": "24px",
+                        "base": "8px",
+                        "sm": "12px",
+                        "grid-margin": "32px",
+                        "lg": "48px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Manrope"],
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Manrope"],
+                        "data-tabular": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Manrope"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "data-tabular": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background min-h-screen text-on-surface antialiased">
+<!-- Main Layout: Split Screen -->
+<div class="flex min-h-screen w-full">
+<!-- Left Pane: Branding & Imagery (Hidden on mobile) -->
+<div class="hidden lg:flex lg:w-[45%] relative bg-inverse-surface flex-col justify-between overflow-hidden p-lg">
+<!-- Background Image with Overlay -->
+<img alt="Premium medical environment" class="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-overlay" data-alt="Premium modern clinical environment, soft natural lighting, state-of-the-art medical equipment in background, shallow depth of field, professional corporate aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRtEGbOPQNAX1mXeaN5CyUvcN23KTlJ7OI-S03a3sDOGxg-5ec7LbYwYamJxAkxRSWcsG8HRTz8a74MOLwhwj3Fa7zbSBmz0vBdhJS2olr0NweFCjOUGEpNq4w7unXeRYojmB3PjQyOaEi7EwGuCBVRVeO--QRpfcA5oHIk7r7oNnX2ApUiNVXLEqezMek2fr3_t5UPYIWcrFGAVFZtQJr2V1ig0cgdmjNV7weHfbY0ltXyzveLW6MgB_76g1KVM6_4Ds3J11ZjBo"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/50 to-primary/20"></div>
+<!-- Content Overlay -->
+<div class="relative z-10 flex items-center gap-sm text-on-primary">
+<span class="material-symbols-outlined text-headline-lg">health_and_safety</span>
+<span class="font-headline-md text-headline-md tracking-tight">Practice Manager</span>
+</div>
+<div class="relative z-10 max-w-md text-on-primary mt-auto">
+<h2 class="font-display-lg text-display-lg mb-md">Elevate your standard of care.</h2>
+<p class="font-body-lg text-body-lg text-on-primary/80">
+                    Join an exclusive network of forward-thinking physicians. Streamline your practice operations with our state-of-the-art management suite.
+                </p>
+<div class="mt-lg flex items-center gap-sm">
+<div class="flex -space-x-4">
+<div class="w-10 h-10 rounded-full border-2 border-primary bg-surface-variant"></div>
+<div class="w-10 h-10 rounded-full border-2 border-primary bg-surface-dim"></div>
+<div class="w-10 h-10 rounded-full border-2 border-primary bg-surface-container-high"></div>
+</div>
+<span class="font-label-sm text-label-sm text-on-primary/80 ml-base">Over 10,000 specialists enrolled</span>
+</div>
+</div>
+</div>
+<!-- Right Pane: Form Area -->
+<div class="w-full lg:w-[55%] flex flex-col justify-center items-center p-md md:p-grid-margin bg-surface-container-lowest overflow-y-auto">
+<div class="w-full max-w-[480px]">
+<!-- Mobile Header (Visible only on mobile) -->
+<div class="flex lg:hidden items-center gap-sm text-primary mb-lg">
+<span class="material-symbols-outlined text-headline-md">health_and_safety</span>
+<span class="font-headline-md text-headline-md tracking-tight">Practice Manager</span>
+</div>
+<!-- Progress Stepper -->
+<div class="mb-lg relative pt-md">
+<div class="absolute left-0 top-[28px] w-full h-[2px] bg-surface-container-high rounded-full z-0"></div>
+<div class="absolute left-0 top-[28px] w-1/3 h-[2px] bg-primary rounded-full z-0"></div>
+<div class="flex justify-between relative z-10">
+<div class="flex flex-col items-center gap-xs">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-label-sm text-label-sm ring-4 ring-surface-container-lowest">1</div>
+<span class="font-label-sm text-label-sm text-primary">Credentials</span>
+</div>
+<div class="flex flex-col items-center gap-xs">
+<div class="w-8 h-8 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center font-label-sm text-label-sm ring-4 ring-surface-container-lowest">2</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Clinic</span>
+</div>
+<div class="flex flex-col items-center gap-xs">
+<div class="w-8 h-8 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center font-label-sm text-label-sm ring-4 ring-surface-container-lowest">3</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Identity</span>
+</div>
+</div>
+</div>
+<!-- Step Header -->
+<div class="mb-lg">
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-xs">Professional Details</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Verify your medical credentials to begin setting up your practice profile.</p>
+</div>
+<!-- Social Fast Paths -->
+<div class="flex gap-sm mb-lg">
+<button class="flex-1 flex items-center justify-center gap-sm py-sm px-md rounded-lg border border-outline-variant bg-surface hover:bg-surface-container transition-colors shadow-sm shadow-primary/5">
+<svg class="w-5 h-5" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path>
+</svg>
+<span class="font-label-sm text-label-sm text-on-surface">Google</span>
+</button>
+<button class="flex-1 flex items-center justify-center gap-sm py-sm px-md rounded-lg border border-outline-variant bg-surface hover:bg-surface-container transition-colors shadow-sm shadow-primary/5">
+<svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.693.793-1.355 2.234-1.173 3.61 1.348.104 2.617-.585 3.46-1.598z"></path>
+</svg>
+<span class="font-label-sm text-label-sm text-on-surface">Apple</span>
+</button>
+</div>
+<div class="flex items-center gap-sm mb-lg">
+<div class="h-px bg-outline-variant flex-1"></div>
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Or register with email</span>
+<div class="h-px bg-outline-variant flex-1"></div>
+</div>
+<!-- Main Form -->
+<form class="space-y-md">
+<!-- Name Row -->
+<div class="flex flex-col sm:flex-row gap-md">
+<div class="flex-1">
+<label class="block font-label-sm text-label-sm text-on-surface mb-xs">First Name</label>
+<input class="w-full bg-surface-container-low border border-transparent focus:border-secondary focus:ring-2 focus:ring-secondary/20 focus:bg-surface-container-lowest rounded-lg px-md py-sm font-body-md text-body-md text-on-surface transition-all outline-none" placeholder="Jane" type="text"/>
+</div>
+<div class="flex-1">
+<label class="block font-label-sm text-label-sm text-on-surface mb-xs">Last Name</label>
+<input class="w-full bg-surface-container-low border border-transparent focus:border-secondary focus:ring-2 focus:ring-secondary/20 focus:bg-surface-container-lowest rounded-lg px-md py-sm font-body-md text-body-md text-on-surface transition-all outline-none" placeholder="Doe" type="text"/>
+</div>
+</div>
+<!-- Email -->
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface mb-xs">Professional Email</label>
+<input class="w-full bg-surface-container-low border border-transparent focus:border-secondary focus:ring-2 focus:ring-secondary/20 focus:bg-surface-container-lowest rounded-lg px-md py-sm font-body-md text-body-md text-on-surface transition-all outline-none" placeholder="dr.doe@clinic.com" type="email"/>
+</div>
+<!-- License -->
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface mb-xs">Medical License Number</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline">badge</span>
+<input class="w-full bg-surface-container-low border border-transparent focus:border-secondary focus:ring-2 focus:ring-secondary/20 focus:bg-surface-container-lowest rounded-lg pl-12 pr-md py-sm font-body-md text-body-md text-on-surface transition-all outline-none" placeholder="e.g. MED-8472910" type="text"/>
+</div>
+</div>
+<!-- Specialization -->
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface mb-xs">Primary Specialization</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline">stethoscope</span>
+<select class="w-full bg-surface-container-low border border-transparent focus:border-secondary focus:ring-2 focus:ring-secondary/20 focus:bg-surface-container-lowest rounded-lg pl-12 pr-md py-sm font-body-md text-body-md text-on-surface transition-all outline-none appearance-none">
+<option disabled="" selected="" value="">Select specialization</option>
+<option>Cardiology</option>
+<option>Dermatology</option>
+<option>Family Medicine</option>
+<option>Internal Medicine</option>
+<option>Neurology</option>
+<option>Pediatrics</option>
+</select>
+<span class="material-symbols-outlined absolute right-md top-1/2 -translate-y-1/2 text-outline pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Medical School -->
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface mb-xs">Medical School</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline">school</span>
+<input class="w-full bg-surface-container-low border border-transparent focus:border-secondary focus:ring-2 focus:ring-secondary/20 focus:bg-surface-container-lowest rounded-lg pl-12 pr-md py-sm font-body-md text-body-md text-on-surface transition-all outline-none" placeholder="Institution Name" type="text"/>
+</div>
+</div>
+<!-- Actions -->
+<div class="pt-sm">
+<a class="w-full bg-gradient-to-b from-primary-container to-primary text-on-primary rounded-lg px-md py-sm font-label-sm text-label-sm flex items-center justify-center gap-sm transition-all hover:opacity-90 shadow-md shadow-primary/10" href="dashboard.html">
+                            Continue to Clinic Details
+                            <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+</form>
+<!-- Footer -->
+<p class="mt-grid-margin text-center font-body-md text-body-md text-on-surface-variant">
+                    Already part of the network?
+                    <a class="text-primary font-semibold hover:text-surface-tint transition-colors" href="dashboard.html">Sign in here</a>
+</p>
+</div>
+</div>
+</div>
+</body></html>

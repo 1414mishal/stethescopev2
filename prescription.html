@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Stethescope - New Prescription</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-highest": "#d3e4fe",
+                      "secondary-fixed-dim": "#3ee09f",
+                      "on-error-container": "#93000a",
+                      "on-surface": "#0b1c30",
+                      "on-primary-fixed": "#0e0761",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary": "#ffffff",
+                      "on-surface-variant": "#464651",
+                      "primary-fixed": "#e2dfff",
+                      "inverse-on-surface": "#eaf1ff",
+                      "surface-tint": "#5555a7",
+                      "on-secondary": "#ffffff",
+                      "error-container": "#ffdad6",
+                      "secondary-container": "#62fdb9",
+                      "on-tertiary-fixed": "#001f27",
+                      "surface-dim": "#cbdbf5",
+                      "primary": "#000000",
+                      "surface-container-low": "#eff4ff",
+                      "error": "#ba1a1a",
+                      "on-tertiary-container": "#0090ac",
+                      "surface-container-high": "#dce9ff",
+                      "on-secondary-fixed-variant": "#005235",
+                      "tertiary": "#000000",
+                      "tertiary-container": "#001f27",
+                      "primary-fixed-dim": "#c1c1ff",
+                      "on-tertiary-fixed-variant": "#004e5e",
+                      "surface": "#f8f9ff",
+                      "on-error": "#ffffff",
+                      "primary-container": "#0e0761",
+                      "on-background": "#0b1c30",
+                      "on-secondary-container": "#00734d",
+                      "on-primary-container": "#7b7bcf",
+                      "tertiary-fixed-dim": "#33d7fe",
+                      "surface-variant": "#d3e4fe",
+                      "outline": "#777682",
+                      "on-primary": "#ffffff",
+                      "on-primary-fixed-variant": "#3d3d8d",
+                      "inverse-surface": "#213145",
+                      "tertiary-fixed": "#b1ecff",
+                      "surface-container": "#e5eeff",
+                      "secondary-fixed": "#62fdb9",
+                      "background": "#f8f9ff",
+                      "secondary": "#006c48",
+                      "on-secondary-fixed": "#002113",
+                      "inverse-primary": "#c1c1ff",
+                      "surface-bright": "#f8f9ff",
+                      "outline-variant": "#c7c5d3"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xs": "4px",
+                      "base": "8px",
+                      "sm": "12px",
+                      "lg": "48px",
+                      "xl": "80px",
+                      "grid-margin": "32px",
+                      "md": "24px",
+                      "grid-gutter": "24px"
+              },
+              "fontFamily": {
+                      "label-sm": ["Inter"],
+                      "headline-lg": ["Manrope"],
+                      "body-md": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "headline-md": ["Manrope"],
+                      "display-lg": ["Manrope"],
+                      "data-tabular": ["Inter"]
+              },
+              "fontSize": {
+                      "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
+                      "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                      "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                      "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                      "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                      "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                      "data-tabular": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        /* Custom scrollbar for a cleaner medical look */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background-color: #c7c5d3; border-radius: 20px; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased min-h-screen flex flex-col lg:flex-row font-body-md text-body-md">
+<!-- NavigationDrawer (Web) -->
+<nav class="hidden lg:flex flex-col fixed left-0 top-0 h-screen p-6 z-40 bg-surface-container-lowest border-r border-outline-variant w-72">
+<div class="mb-8">
+<h2 class="font-headline-lg text-[20px] font-extrabold text-primary-container tracking-tight">Stethescope</h2>
+</div>
+<ul class="flex flex-col gap-2 font-manrope text-sm font-medium">
+<li><a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors" href="dashboard.html"><span class="material-symbols-outlined">dashboard</span>Dashboard</a></li>
+<li><a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors" href="patients.html"><span class="material-symbols-outlined">group</span>Patients</a></li>
+<li><a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-surface-container text-primary-container font-bold border-r-4 border-primary-container" href="prescription.html"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">edit_note</span>Prescriptions</a></li>
+<li><a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors" href="teleconsult.html"><span class="material-symbols-outlined">videocam</span>Tele-Consult</a></li>
+<li><a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors" href="chronic-care.html"><span class="material-symbols-outlined">monitor_heart</span>Chronic Care</a></li>
+<li><a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors" href="calendar.html"><span class="material-symbols-outlined">calendar_month</span>Calendar</a></li>
+<li><a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors" href="revenue.html"><span class="material-symbols-outlined">payments</span>Revenue</a></li>
+<li><a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors" href="profile.html"><span class="material-symbols-outlined">account_circle</span>Profile</a></li>
+</ul>
+</nav>
+<div class="flex flex-col flex-1 lg:ml-72 min-w-0 w-full">
+<!-- TopAppBar Component (Transactional/Modal interpretation - keeping exact JSON labels but structured as requested) -->
+<header class="bg-surface-container-lowest/80 backdrop-blur-md text-primary-container font-headline-md border-b border-outline-variant shadow-sm flex justify-between items-center w-full px-6 py-4 sticky top-0 z-50 lg:hidden">
+<a aria-label="Close" href="dashboard.html" class="flex items-center justify-center p-2 rounded-full hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</a>
+<a href="dashboard.html" class="font-headline-lg text-[20px] font-extrabold text-primary-container tracking-tight">Stethescope</a>
+<div class="flex items-center gap-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant hidden md:inline-block">Dr. Julian Vance</span>
+<div class="w-8 h-8 rounded-full bg-surface-container-high overflow-hidden border border-outline-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-container text-[20px]" data-icon="person">person</span>
+</div>
+</div>
+</header>
+<main class="flex-1 flex flex-col p-md max-w-2xl mx-auto w-full gap-md pb-xl">
+<div class="flex flex-col gap-xs mb-sm">
+<h2 class="font-headline-md text-headline-md text-on-surface">New Prescription</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Complete the following steps to issue an Rx.</p>
+</div>
+<!-- Step 1: Patient Selection -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm p-md flex flex-col gap-sm">
+<div class="flex items-center gap-sm border-b border-outline-variant pb-sm mb-xs">
+<div class="w-6 h-6 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-label-sm text-label-sm">1</div>
+<h3 class="font-label-sm text-label-sm text-on-surface uppercase tracking-wider">Patient Selection</h3>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg py-sm pl-xl pr-sm font-body-md text-body-md text-on-surface focus:bg-surface-container-lowest focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-all placeholder:text-outline" placeholder="Search patient by name or ID..." type="text"/>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-sm mt-xs">
+<!-- Selected Patient Mockup -->
+<div class="border-2 border-secondary rounded-lg p-sm bg-surface-container-low flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest overflow-hidden">
+<img alt="Patient portrait" class="w-full h-full object-cover" data-alt="close up portrait of a young woman with a neutral expression in soft studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD21NmCrZFEfhyi98go0sZEoAXaW7UljlG7ks9-LrHT6g4tg-HxQWWZH9-mI1JULei0LLxA2nKItLZivKjv8CmjcWXADsxCvvrQvwPZyuzylsFKTjqvbe3YiJmAcK4II_fi1q_MdEZ6o28HKLFAVXn9H0h_OlfpznHJEJbDTOpiLoCB1dq2xAfL4Pf9Ct23of7RmiFka4e3U2GJt4xu-_-gcfuut6RfvSswsVSem_kUDdcNLRrgx1T5rJhB2O5n11SHYR2UyzCQgjE"/>
+</div>
+<div class="flex-1">
+<div class="font-label-sm text-label-sm text-on-surface">Sarah Jenkins</div>
+<div class="font-data-tabular text-[12px] text-on-surface-variant">DOB: 11/14/1985 • ID: P-4429</div>
+</div>
+<span class="material-symbols-outlined text-secondary" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+</section>
+<!-- Step 2: Add Medication -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm p-md flex flex-col gap-sm relative">
+<!-- Tonal layer effect -->
+<div class="absolute inset-0 bg-surface-variant/10 rounded-xl pointer-events-none"></div>
+<div class="flex items-center gap-sm border-b border-outline-variant pb-sm mb-xs relative z-10">
+<div class="w-6 h-6 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-label-sm text-label-sm">2</div>
+<h3 class="font-label-sm text-label-sm text-on-surface uppercase tracking-wider">Add Medication</h3>
+</div>
+<div class="flex flex-col gap-xs relative z-10">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Drug Name Database</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-outline" data-icon="medication">medication</span>
+<input class="w-full bg-surface-container-lowest border border-secondary rounded-lg py-sm pl-xl pr-sm font-body-md text-body-md text-on-surface outline-none ring-1 ring-secondary/50" type="text" value="Amoxicillin"/>
+</div>
+<!-- Auto-suggestion visual cue -->
+<div class="flex flex-wrap gap-xs mt-xs">
+<span class="bg-surface-container px-2 py-1 rounded text-[11px] font-label-sm text-on-surface-variant cursor-pointer hover:bg-surface-variant">Amoxicillin 250mg</span>
+<span class="bg-primary-container/10 px-2 py-1 rounded text-[11px] font-label-sm text-primary-container border border-primary-container/20 cursor-pointer">Amoxicillin 500mg</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-sm relative z-10 mt-sm">
+<div class="flex flex-col gap-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Dosage</label>
+<select class="w-full bg-surface-container-low border border-outline-variant rounded-lg p-sm font-body-md text-body-md text-on-surface focus:border-secondary outline-none appearance-none">
+<option>500 mg</option>
+<option>250 mg</option>
+</select>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Frequency</label>
+<select class="w-full bg-surface-container-low border border-outline-variant rounded-lg p-sm font-body-md text-body-md text-on-surface focus:border-secondary outline-none appearance-none">
+<option>TID (3 times/day)</option>
+<option>BID (2 times/day)</option>
+</select>
+</div>
+</div>
+<div class="flex flex-col gap-xs relative z-10 mt-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Duration &amp; Quantity</label>
+<div class="flex gap-sm items-center">
+<input class="w-20 bg-surface-container-low border border-outline-variant rounded-lg p-sm font-data-tabular text-data-tabular text-center text-on-surface focus:border-secondary outline-none" type="number" value="10"/>
+<span class="font-body-md text-body-md text-on-surface-variant">Days</span>
+<div class="h-4 w-px bg-outline-variant mx-xs"></div>
+<span class="font-body-md text-body-md text-on-surface font-medium">Dispense: 30 caps</span>
+</div>
+</div>
+</section>
+<!-- Step 3: Instructions & Notes -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm p-md flex flex-col gap-sm">
+<div class="flex items-center gap-sm border-b border-outline-variant pb-sm mb-xs">
+<div class="w-6 h-6 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-label-sm text-label-sm">3</div>
+<h3 class="font-label-sm text-label-sm text-on-surface uppercase tracking-wider">Instructions &amp; Signature</h3>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Patient Instructions (Sig)</label>
+<textarea class="w-full bg-surface-container-low border border-outline-variant rounded-lg p-sm font-body-md text-body-md text-on-surface focus:bg-surface-container-lowest focus:border-secondary outline-none resize-none" rows="2">Take one capsule by mouth three times daily for 10 days until finished.</textarea>
+</div>
+<div class="flex flex-col gap-xs mt-sm">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Provider Signature</label>
+<div class="h-24 w-full bg-surface-container-low border-2 border-dashed border-outline-variant rounded-lg flex items-center justify-center relative overflow-hidden">
+<span class="font-body-md text-body-md text-outline absolute">Sign Here</span>
+<!-- Simulated signature path -->
+<svg class="absolute inset-0 w-full h-full opacity-80 pointer-events-none" viewbox="0 0 300 100">
+<path d="M 50,50 Q 80,20 100,60 T 150,40 T 200,70" fill="none" stroke="#0e0761" stroke-linecap="round" stroke-width="3"></path>
+</svg>
+</div>
+<div class="flex justify-between items-center mt-xs">
+<span class="font-label-sm text-[11px] text-on-surface-variant">Digital Signature Active</span>
+<button class="font-label-sm text-[11px] text-primary-container hover:underline">Clear</button>
+</div>
+</div>
+</section>
+<!-- Footer Actions -->
+<div class="mt-md flex flex-col gap-sm">
+<button class="w-full bg-primary-container text-on-primary-container font-label-sm text-[14px] rounded-lg py-sm px-md flex items-center justify-center gap-xs shadow-sm hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-[18px]" data-icon="visibility">visibility</span>
+                Preview Rx
+            </button>
+<button class="w-full bg-transparent border-2 border-outline-variant text-on-surface-variant font-label-sm text-[14px] rounded-lg py-sm px-md flex items-center justify-center hover:bg-surface-container transition-colors">
+                Cancel
+            </button>
+</div>
+</main>
+</div>
+<!-- BottomNavBar (Mobile) -->
+<nav class="lg:hidden fixed bottom-0 left-0 w-full h-16 flex justify-around items-center px-4 z-50 bg-surface-container-lowest border-t border-outline-variant shadow-[0_-4px_20px_rgba(8,0,94,0.04)] rounded-t-2xl font-manrope text-[10px] font-semibold uppercase tracking-wider pb-safe">
+<a class="flex flex-col items-center justify-center text-slate-400 w-16 h-full" href="dashboard.html"><span class="material-symbols-outlined mb-1">dashboard</span>Home</a>
+<a class="flex flex-col items-center justify-center text-slate-400 w-16 h-full" href="patients.html"><span class="material-symbols-outlined mb-1">person_search</span>Patients</a>
+<a class="flex flex-col items-center justify-center text-teal-600 transform scale-95 w-16 h-full" href="prescription.html"><span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">edit_note</span>Scripts</a>
+<a class="flex flex-col items-center justify-center text-slate-400 w-16 h-full" href="calendar.html"><span class="material-symbols-outlined mb-1">calendar_month</span>Calendar</a>
+<a class="flex flex-col items-center justify-center text-slate-400 w-16 h-full" href="profile.html"><span class="material-symbols-outlined mb-1">menu</span>More</a>
+</nav>
+</body></html>

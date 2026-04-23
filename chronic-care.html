@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Chronic Care Monitoring - Clinic OS</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#f8f9ff",
+                        "outline-variant": "#c7c5d3",
+                        "secondary": "#006c48",
+                        "surface-container": "#e5eeff",
+                        "secondary-fixed": "#62fdb9",
+                        "background": "#f8f9ff",
+                        "inverse-primary": "#c1c1ff",
+                        "on-secondary-fixed": "#002113",
+                        "on-primary-fixed-variant": "#3d3d8d",
+                        "inverse-surface": "#213145",
+                        "tertiary-fixed": "#b1ecff",
+                        "on-secondary-container": "#00734d",
+                        "on-primary-container": "#7b7bcf",
+                        "outline": "#777682",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed-dim": "#33d7fe",
+                        "surface-variant": "#d3e4fe",
+                        "on-background": "#0b1c30",
+                        "tertiary-container": "#001f27",
+                        "primary-fixed-dim": "#c1c1ff",
+                        "on-tertiary-fixed-variant": "#004e5e",
+                        "primary-container": "#0e0761",
+                        "surface": "#f8f9ff",
+                        "on-error": "#ffffff",
+                        "surface-container-high": "#dce9ff",
+                        "on-secondary-fixed-variant": "#005235",
+                        "on-tertiary-container": "#0090ac",
+                        "tertiary": "#000000",
+                        "surface-container-low": "#eff4ff",
+                        "error": "#ba1a1a",
+                        "surface-dim": "#cbdbf5",
+                        "primary": "#000000",
+                        "error-container": "#ffdad6",
+                        "secondary-container": "#62fdb9",
+                        "on-tertiary-fixed": "#001f27",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "on-surface-variant": "#464651",
+                        "surface-tint": "#5555a7",
+                        "primary-fixed": "#e2dfff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface": "#0b1c30",
+                        "on-primary-fixed": "#0e0761",
+                        "surface-container-highest": "#d3e4fe",
+                        "secondary-fixed-dim": "#3ee09f",
+                        "on-error-container": "#93000a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "12px",
+                        "xs": "4px",
+                        "base": "8px",
+                        "xl": "80px",
+                        "grid-margin": "32px",
+                        "md": "24px",
+                        "grid-gutter": "24px",
+                        "lg": "48px"
+                    },
+                    "fontFamily": {
+                        "data-tabular": ["Inter"],
+                        "headline-md": ["Manrope"],
+                        "display-lg": ["Manrope"],
+                        "label-sm": ["Inter"],
+                        "headline-lg": ["Manrope"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "data-tabular": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #f8f9ff; }
+        /* Hide scrollbar for cleaner look in nav */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-bright text-on-surface antialiased selection:bg-primary-container selection:text-on-primary">
+<!-- TopAppBar (JSON Sourced) -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-sm border-b border-slate-200 dark:border-slate-800 transition-all duration-200 ease-in-out hidden md:flex">
+<div class="flex items-center gap-4">
+<h1 class="font-manrope font-semibold tracking-tight text-lg font-extrabold text-[#08005E] dark:text-blue-200">Clinic OS</h1>
+</div>
+<div class="flex items-center gap-6">
+<button class="text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 p-2 rounded-full transition-all duration-200 ease-in-out">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-surface-container-high overflow-hidden border border-outline-variant">
+<img alt="Physician Profile Photo" class="w-full h-full object-cover" data-alt="professional headshot of a female physician in her 40s wearing a white coat and stethoscope, smiling warmly against a light grey background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpeXP7c6QqT4PiDHA5R-mkhJYU4vfPINtT9_Pgp51UEG5koRLLnhcVPZwkJEOfn7nCmfTKXkPZg40QI0EP0O4dwct1D8Qkd5M-67Rnx-sPqXQB9w2ThvgMgNoxyI_7p3T4jB0g2Nfmtzjkp4ChyYgrmE_5akXI18s5Cuw5lm7eRQB_Yog8oSwUPoVH_b1Kz9ji92WNGHVAEUbnnFkjeTUO3bZnG139e2Z-u33wpMCCC7SK70c4q2y_8PedMkEOpuaUh1ySAguwJOA"/>
+</div>
+</div>
+</header>
+<!-- NavigationDrawer (Desktop - JSON Sourced) -->
+<aside class="fixed inset-y-0 left-0 z-[60] flex flex-col p-6 h-full w-80 rounded-r-2xl divide-y divide-slate-100 dark:divide-slate-800 shadow-2xl bg-white dark:bg-slate-900 ease-out duration-300 hidden md:flex mt-16">
+<div class="pb-6">
+<h2 class="text-xl font-black text-[#08005E] mb-8 font-manrope font-semibold tracking-tight">Clinic OS</h2>
+<div class="flex items-center gap-4">
+<div class="h-12 w-12 rounded-full overflow-hidden bg-surface-container">
+<img alt="Dr. Smith" class="w-full h-full object-cover" data-alt="professional headshot of a female physician in her 40s wearing a white coat and stethoscope, smiling warmly against a light grey background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLsUd1F3CWDMcq5HLZVtKD11nKA_oLuALC2jelB-t4bDNcqfmPmDdsBYHfMb-NzKMrmTsa2C9Ao4jdnul6YqOpGzslBmpNz2f_Kncjqcuu30VvDKO5jzz9Mk2kSpY4nmweQ549Q6B6R8o2DuSEdhqm-ZL92fNSyqjyn7Jh_O88movN0z1JvpUGQJv-3rBWsAFeP59byUGest4pakgp0WTUyRY1KpAqfwmligpKfaS-MTlAf9HjAMT4sOHCC5lXX2aBqJMOANow75o"/>
+</div>
+<div>
+<div class="text-[#08005E] dark:text-blue-400 font-manrope text-sm font-bold">Dr. Jameson Smith</div>
+<div class="text-slate-500 text-xs">Chief Medical Officer</div>
+<div class="text-slate-400 text-[10px]">License: #MD99203</div>
+</div>
+</div>
+</div>
+<nav class="pt-6 flex-1 flex flex-col gap-2">
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 font-manrope text-sm hover:pl-6 transition-all duration-300" href="dashboard.html">
+<span class="material-symbols-outlined">dashboard</span>Dashboard
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 font-manrope text-sm hover:pl-6 transition-all duration-300" href="patients.html">
+<span class="material-symbols-outlined">group</span>Patients
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 font-manrope text-sm hover:pl-6 transition-all duration-300" href="prescription.html">
+<span class="material-symbols-outlined">edit_note</span>Prescriptions
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 font-manrope text-sm hover:pl-6 transition-all duration-300" href="teleconsult.html">
+<span class="material-symbols-outlined">videocam</span>Tele-Consult
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-800 text-[#08005E] dark:text-blue-300 border-l-4 border-[#08005E] font-bold font-manrope text-sm hover:pl-6 transition-all duration-300" href="chronic-care.html">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">monitor_heart</span>Chronic Care
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 font-manrope text-sm hover:pl-6 transition-all duration-300" href="calendar.html">
+<span class="material-symbols-outlined">calendar_month</span>Calendar
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 font-manrope text-sm hover:pl-6 transition-all duration-300" href="revenue.html">
+<span class="material-symbols-outlined">payments</span>Revenue
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 font-manrope text-sm hover:pl-6 transition-all duration-300" href="profile.html">
+<span class="material-symbols-outlined">account_circle</span>Profile
+</a>
+</nav>
+</aside>
+<!-- BottomNavBar (Mobile - JSON Sourced) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 pb-safe px-4 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 shadow-[0_-4px_20px_rgba(8,0,94,0.04)] md:hidden rounded-t-xl active:scale-95 transition-transform">
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 py-1 px-3 hover:text-[#08005E] dark:hover:text-blue-200 font-manrope text-[10px] font-medium" href="dashboard.html">
+<span class="material-symbols-outlined">dashboard</span>
+            Home
+        </a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 py-1 px-3 hover:text-[#08005E] dark:hover:text-blue-200 font-manrope text-[10px] font-medium" href="patients.html">
+<span class="material-symbols-outlined">person_search</span>
+            Patients
+        </a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 py-1 px-3 hover:text-[#08005E] dark:hover:text-blue-200 font-manrope text-[10px] font-medium" href="prescription.html">
+<span class="material-symbols-outlined">edit_note</span>
+            Scripts
+        </a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 py-1 px-3 hover:text-[#08005E] dark:hover:text-blue-200 font-manrope text-[10px] font-medium" href="calendar.html">
+<span class="material-symbols-outlined">calendar_month</span>
+            Calendar
+        </a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 py-1 px-3 hover:text-[#08005E] dark:hover:text-blue-200 font-manrope text-[10px] font-medium" href="profile.html">
+<span class="material-symbols-outlined">menu</span>
+            More
+        </a>
+</nav>
+<!-- Main Content Canvas -->
+<main class="md:ml-80 pt-16 md:pt-24 pb-24 md:pb-12 px-4 md:px-grid-margin min-h-screen">
+<div class="max-w-7xl mx-auto space-y-grid-gutter">
+<!-- Page Header / Patient Context -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div class="flex items-center gap-6">
+<div class="w-20 h-20 rounded-xl overflow-hidden shadow-sm border border-outline-variant bg-surface-container flex-shrink-0">
+<img alt="Patient Photo" class="w-full h-full object-cover" data-alt="close up portrait of an elderly man with silver hair and a warm but concerned expression, soft natural lighting, light neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuASoBmMU65z72KHWSTRNkb2A8TJ47xMZYrBo1GIXKZTrZzodLq4MKi7DnzoqBeEAxLxJtPgqQWRzb-sp4gSUnRajvyxfH2CsxIzAKdA5xgmZAyQa6d1nhLIBYR5GN210L5Y-Wek627845Hf3IE3p5Vq_EBgzGafJkwYPsgvA7jn7sIzVkgTkKpKzQ9PIo-ffmP-sNj-gk7-rQeTVDbJiWrQvKk1cw2wInPvvD3lrq_QIozeQkAK4NpLNXujGG-YIcnIVSeAjq353Ws"/>
+</div>
+<div>
+<div class="flex items-center gap-3 mb-1">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Robert H. Miller</h2>
+<span class="bg-error-container text-on-error-container font-label-sm text-label-sm px-2 py-1 rounded-md flex items-center gap-1 border border-[#ffb4ab]">
+<span class="material-symbols-outlined text-[14px]">warning</span> High Risk
+                            </span>
+</div>
+<div class="font-body-md text-body-md text-on-surface-variant flex items-center gap-4 flex-wrap">
+<span>DOB: 11/04/1948 (75y)</span>
+<span class="w-1 h-1 rounded-full bg-outline"></span>
+<span>MRN: #882-94A-01</span>
+<span class="w-1 h-1 rounded-full bg-outline"></span>
+<span>Dx: Type 2 Diabetes, Hypertension</span>
+</div>
+</div>
+</div>
+<button class="bg-error hover:bg-[#93000a] text-on-error px-6 py-3 rounded-lg font-label-sm text-label-sm flex items-center justify-center gap-2 transition-colors shadow-sm whitespace-nowrap">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">calendar_add_on</span>
+                    Schedule Urgent Follow-up
+                </button>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-grid-gutter">
+<!-- Remote Monitoring Status -->
+<div class="col-span-1 lg:col-span-4 bg-surface-container rounded-xl p-md border border-outline-variant shadow-[0_4px_20px_rgba(14,7,97,0.04)] flex flex-col">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-headline-md text-headline-md text-on-surface">Telemetry Status</h3>
+<span class="flex items-center gap-1.5 text-secondary font-label-sm text-label-sm bg-[#e8f6f0] px-2.5 py-1 rounded-full border border-[#a3e2c6]">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+                            Live Sync
+                        </span>
+</div>
+<div class="space-y-4 flex-1">
+<!-- Device 1 -->
+<div class="p-4 bg-surface-bright rounded-lg border border-outline-variant/50 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container/10 flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined">sensors</span>
+</div>
+<div>
+<div class="font-label-sm text-label-sm text-on-surface">Dexcom G6 CGM</div>
+<div class="font-body-md text-[13px] text-on-surface-variant">Last reading: 2 mins ago</div>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="material-symbols-outlined text-secondary text-[20px]">battery_5_bar</span>
+<span class="font-data-tabular text-data-tabular text-on-surface-variant text-[11px]">84%</span>
+</div>
+</div>
+<!-- Device 2 -->
+<div class="p-4 bg-surface-bright rounded-lg border border-outline-variant/50 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container/10 flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined">monitor_heart</span>
+</div>
+<div>
+<div class="font-label-sm text-label-sm text-on-surface">Omron BP Cuff</div>
+<div class="font-body-md text-[13px] text-on-surface-variant">Last reading: 4 hrs ago</div>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="material-symbols-outlined text-outline text-[20px]">battery_2_bar</span>
+<span class="font-data-tabular text-data-tabular text-on-surface-variant text-[11px]">22%</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Current Vitals Overview -->
+<div class="col-span-1 lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-grid-gutter">
+<!-- Glucose Alert Card -->
+<div class="bg-error-container rounded-xl p-md border border-[#ffb4ab] shadow-sm relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-error/5 rounded-bl-full -mr-8 -mt-8"></div>
+<div class="flex justify-between items-start mb-4 relative z-10">
+<div class="font-label-sm text-label-sm text-on-error-container flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">bloodtype</span>
+                                Blood Glucose
+                            </div>
+<span class="material-symbols-outlined text-error" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<div class="flex items-baseline gap-2 relative z-10">
+<span class="font-display-lg text-display-lg text-error">214</span>
+<span class="font-data-tabular text-data-tabular text-on-error-container">mg/dL</span>
+</div>
+<div class="mt-4 font-body-md text-body-md text-error flex items-center gap-1.5 bg-error/10 w-fit px-2 py-1 rounded-md">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+                            +42 from fasting base
+                        </div>
+</div>
+<!-- Blood Pressure Card -->
+<div class="bg-surface-container rounded-xl p-md border border-outline-variant shadow-sm relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary-container/5 rounded-bl-full -mr-8 -mt-8"></div>
+<div class="flex justify-between items-start mb-4 relative z-10">
+<div class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+                                Blood Pressure
+                            </div>
+<span class="material-symbols-outlined text-outline-variant">info</span>
+</div>
+<div class="flex items-baseline gap-2 relative z-10">
+<span class="font-display-lg text-display-lg text-on-surface">138<span class="text-3xl text-on-surface-variant/60 font-light">/88</span></span>
+<span class="font-data-tabular text-data-tabular text-on-surface-variant">mmHg</span>
+</div>
+<div class="mt-4 font-body-md text-body-md text-on-surface-variant flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-secondary">trending_flat</span>
+                            Stable past 72hrs
+                        </div>
+</div>
+</div>
+<!-- Blood Glucose Progress Graph (Threshold Alert) -->
+<div class="col-span-1 lg:col-span-6 bg-surface-container rounded-xl p-md border border-outline-variant shadow-[0_4px_20px_rgba(14,7,97,0.04)]">
+<div class="flex justify-between items-center mb-6">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Glucose Trends</h3>
+<p class="font-body-md text-[13px] text-on-surface-variant mt-1">Past 7 days continuous monitoring</p>
+</div>
+<div class="font-data-tabular text-data-tabular text-on-surface-variant bg-surface-bright px-3 py-1.5 rounded-md border border-outline-variant/50">
+                            Range: 80 - 180
+                        </div>
+</div>
+<!-- Faux Bar Chart Area -->
+<div class="relative h-48 w-full mt-8 border-b border-outline-variant flex items-end justify-between px-2 pb-1">
+<!-- Y-Axis Labels -->
+<div class="absolute left-0 top-0 h-full flex flex-col justify-between text-[10px] text-outline-variant font-data-tabular -ml-6">
+<span>250</span>
+<span>180</span>
+<span>100</span>
+</div>
+<!-- Threshold Line (180 mg/dL) -->
+<div class="absolute left-0 w-full border-t border-dashed border-error top-[28%] z-0 flex items-center justify-end">
+<span class="text-[10px] text-error font-data-tabular bg-surface-container pl-2 pr-1 -mt-2">Alert Limit</span>
+</div>
+<!-- Data Bars -->
+<div class="w-8 bg-primary-container/20 hover:bg-primary-container/40 rounded-t-sm relative z-10 transition-colors cursor-pointer group" style="height: 40%;">
+<div class="opacity-0 group-hover:opacity-100 absolute -top-8 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface text-[10px] px-2 py-1 rounded pointer-events-none transition-opacity">110</div>
+</div>
+<div class="w-8 bg-primary-container/20 hover:bg-primary-container/40 rounded-t-sm relative z-10 transition-colors cursor-pointer group" style="height: 55%;">
+<div class="opacity-0 group-hover:opacity-100 absolute -top-8 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface text-[10px] px-2 py-1 rounded pointer-events-none transition-opacity">145</div>
+</div>
+<div class="w-8 bg-primary-container/20 hover:bg-primary-container/40 rounded-t-sm relative z-10 transition-colors cursor-pointer group" style="height: 60%;">
+<div class="opacity-0 group-hover:opacity-100 absolute -top-8 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface text-[10px] px-2 py-1 rounded pointer-events-none transition-opacity">155</div>
+</div>
+<div class="w-8 bg-primary-container/20 hover:bg-primary-container/40 rounded-t-sm relative z-10 transition-colors cursor-pointer group" style="height: 50%;">
+<div class="opacity-0 group-hover:opacity-100 absolute -top-8 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface text-[10px] px-2 py-1 rounded pointer-events-none transition-opacity">130</div>
+</div>
+<div class="w-8 bg-error/80 hover:bg-error rounded-t-sm relative z-10 transition-colors cursor-pointer group" style="height: 85%;">
+<div class="opacity-0 group-hover:opacity-100 absolute -top-8 left-1/2 -translate-x-1/2 bg-error text-on-error text-[10px] px-2 py-1 rounded pointer-events-none transition-opacity font-bold">210</div>
+</div>
+<div class="w-8 bg-error/80 hover:bg-error rounded-t-sm relative z-10 transition-colors cursor-pointer group" style="height: 90%;">
+<div class="opacity-0 group-hover:opacity-100 absolute -top-8 left-1/2 -translate-x-1/2 bg-error text-on-error text-[10px] px-2 py-1 rounded pointer-events-none transition-opacity font-bold">225</div>
+</div>
+<div class="w-8 bg-error hover:bg-[#93000a] rounded-t-sm relative z-10 transition-colors cursor-pointer group shadow-[0_0_10px_rgba(186,26,26,0.3)]" style="height: 88%;">
+<div class="opacity-100 absolute -top-8 left-1/2 -translate-x-1/2 bg-error text-on-error text-[10px] px-2 py-1 rounded pointer-events-none font-bold">214</div>
+</div>
+</div>
+<!-- X-Axis Labels -->
+<div class="flex justify-between mt-2 px-2 text-[11px] text-outline-variant font-data-tabular">
+<span>Mon</span>
+<span>Tue</span>
+<span>Wed</span>
+<span>Thu</span>
+<span>Fri</span>
+<span>Sat</span>
+<span>Today</span>
+</div>
+</div>
+<!-- Blood Pressure Progress Graph -->
+<div class="col-span-1 lg:col-span-6 bg-surface-container rounded-xl p-md border border-outline-variant shadow-[0_4px_20px_rgba(14,7,97,0.04)]">
+<div class="flex justify-between items-center mb-6">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Blood Pressure Trends</h3>
+<p class="font-body-md text-[13px] text-on-surface-variant mt-1">Systolic / Diastolic variations</p>
+</div>
+<div class="font-data-tabular text-data-tabular text-on-surface-variant bg-surface-bright px-3 py-1.5 rounded-md border border-outline-variant/50">
+                            Target: &lt; 140/90
+                        </div>
+</div>
+<!-- Faux Range/Candlestick Chart Area -->
+<div class="relative h-48 w-full mt-8 border-b border-outline-variant flex items-end justify-between px-4 pb-1">
+<!-- Y-Axis Labels -->
+<div class="absolute left-0 top-0 h-full flex flex-col justify-between text-[10px] text-outline-variant font-data-tabular -ml-6">
+<span>160</span>
+<span>120</span>
+<span>80</span>
+</div>
+<!-- Target Line (140) -->
+<div class="absolute left-0 w-full border-t border-dashed border-outline-variant top-[25%] z-0"></div>
+<!-- Data Range Bars -->
+<div class="flex flex-col items-center justify-end h-full relative z-10 w-4 group">
+<div class="w-1.5 bg-outline/30 rounded-full h-[60%] absolute bottom-[25%]"></div>
+<div class="w-4 bg-primary-container rounded-sm h-[30%] absolute bottom-[35%] transition-all group-hover:scale-110 cursor-pointer"></div>
+</div>
+<div class="flex flex-col items-center justify-end h-full relative z-10 w-4 group">
+<div class="w-1.5 bg-outline/30 rounded-full h-[65%] absolute bottom-[22%]"></div>
+<div class="w-4 bg-primary-container rounded-sm h-[28%] absolute bottom-[38%] transition-all group-hover:scale-110 cursor-pointer"></div>
+</div>
+<div class="flex flex-col items-center justify-end h-full relative z-10 w-4 group">
+<div class="w-1.5 bg-outline/30 rounded-full h-[55%] absolute bottom-[28%]"></div>
+<div class="w-4 bg-primary-container rounded-sm h-[25%] absolute bottom-[40%] transition-all group-hover:scale-110 cursor-pointer"></div>
+</div>
+<div class="flex flex-col items-center justify-end h-full relative z-10 w-4 group">
+<div class="w-1.5 bg-outline/30 rounded-full h-[62%] absolute bottom-[24%]"></div>
+<div class="w-4 bg-primary-container rounded-sm h-[32%] absolute bottom-[32%] transition-all group-hover:scale-110 cursor-pointer"></div>
+</div>
+<div class="flex flex-col items-center justify-end h-full relative z-10 w-4 group">
+<div class="w-1.5 bg-outline/30 rounded-full h-[58%] absolute bottom-[26%]"></div>
+<div class="w-4 bg-primary-container rounded-sm h-[26%] absolute bottom-[38%] transition-all group-hover:scale-110 cursor-pointer"></div>
+</div>
+</div>
+<!-- X-Axis Labels -->
+<div class="flex justify-between mt-2 px-4 text-[11px] text-outline-variant font-data-tabular">
+<span>Jul 1</span>
+<span>Jul 3</span>
+<span>Jul 5</span>
+<span>Jul 7</span>
+<span>Today</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

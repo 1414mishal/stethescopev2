@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Subscriptions — Stethescope</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<style>
+  body{font-family:'Inter',sans-serif;background:#f8f9ff;color:#0b1c30}
+  h1,h2,h3,.font-head{font-family:'Manrope',sans-serif}
+  .grad-primary{background:linear-gradient(135deg,#1A237E 0%,#08005E 100%)}
+  .grad-mesh{background:radial-gradient(at 10% 10%,rgba(193,193,255,0.35) 0,transparent 50%),radial-gradient(at 95% 15%,rgba(98,253,185,0.25) 0,transparent 50%),#f8f9ff}
+  .card{background:rgba(255,255,255,0.9);backdrop-filter:blur(12px);border:1px solid #c7c5d3;box-shadow:0 4px 24px rgba(8,0,94,0.06);transition:all .3s}
+  .card:hover{border-color:#006c48;box-shadow:0 10px 32px rgba(8,0,94,0.12);transform:translateY(-3px)}
+  .chip{font-size:11px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;padding:4px 10px;border-radius:9999px}
+  .feat{display:flex;align-items:center;gap:10px;padding:8px 0;font-size:14px;color:#0b1c30;border-bottom:1px solid #eff4ff}
+  .feat:last-child{border:none}
+  .feat .v{margin-left:auto;font-weight:600}
+  .yes{color:#006c48}.no{color:#c7c5d3}
+</style>
+</head>
+<body class="grad-mesh min-h-screen">
+
+<header class="sticky top-0 z-50 backdrop-blur-md bg-white/80 border-b border-slate-200">
+  <div class="max-w-7xl mx-auto px-5 py-3 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-full grad-primary flex items-center justify-center text-white font-bold font-head shadow-lg">S</div>
+      <div class="font-head font-extrabold text-[#08005E] text-xl">Stethescope</div>
+    </a>
+    <nav class="hidden lg:flex items-center gap-7 text-sm">
+      <a href="index.html" class="text-slate-600 font-medium hover:text-[#08005E]">Home</a>
+      <a href="subscriptions.html" class="text-[#08005E] font-semibold">Subscriptions</a>
+      <a href="services.html" class="text-slate-600 font-medium hover:text-[#08005E]">Services</a>
+      <a href="videos.html" class="text-slate-600 font-medium hover:text-[#08005E]">Videos</a>
+      <a href="contact.html" class="text-slate-600 font-medium hover:text-[#08005E]">Contact Us</a>
+      <a href="profile.html" class="text-slate-600 font-medium hover:text-[#08005E]">Physician Profile</a>
+      <a href="blog.html" class="text-slate-600 font-medium hover:text-[#08005E]">Physician Blog</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <a href="signin.html" class="hidden sm:inline-flex items-center gap-2 text-sm font-semibold text-[#08005E] px-4 py-2 hover:bg-slate-100 rounded-lg">Sign In</a>
+      <a href="signup.html" class="inline-flex items-center gap-2 grad-primary text-white px-4 py-2 rounded-lg font-semibold text-sm">Get Started</a>
+      <button data-action="menu" class="lg:hidden p-2 text-[#08005E]"><span class="material-symbols-outlined">menu</span></button>
+    </div>
+  </div>
+</header>
+
+<section class="max-w-7xl mx-auto px-6 pt-14 pb-8 text-center">
+  <div class="chip bg-[#62fdb9]/40 text-[#00734d] inline-block mb-4">Subscriptions</div>
+  <h1 class="font-head font-extrabold text-4xl md:text-5xl">Choose a plan that fits your practice</h1>
+  <p class="text-slate-500 mt-4 max-w-2xl mx-auto">All plans include GST. Start with Free For Life — upgrade anytime. HSN:997331.</p>
+</section>
+
+<section class="max-w-7xl mx-auto px-6 pb-20">
+  <div class="grid lg:grid-cols-3 gap-6">
+
+    <!-- FREE -->
+    <div class="card rounded-3xl p-8 flex flex-col">
+      <div class="chip bg-slate-100 text-slate-600 self-start mb-4">Free For Life</div>
+      <h3 class="font-head font-extrabold text-2xl">Starter</h3>
+      <p class="text-slate-500 text-sm mt-1">For solo practitioners starting out.</p>
+      <div class="mt-6 mb-2">
+        <div class="font-head font-extrabold text-5xl">₹0</div>
+        <div class="text-slate-500 text-sm mt-1">With GST: ₹0.00 · HSN:997331</div>
+      </div>
+      <button data-action="navigate" data-payload="signup.html" class="mt-6 w-full py-3 rounded-xl border-2 border-[#08005E] text-[#08005E] font-bold hover:bg-[#08005E] hover:text-white transition-colors">Get started free</button>
+      <div class="mt-8">
+        <div class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-3">Features</div>
+        <div class="feat">Maximum Medical Facilities <span class="v">1</span></div>
+        <div class="feat">Maximum Patients <span class="v yes">Unlimited</span></div>
+        <div class="feat">Maximum Clinic Staff <span class="v">1</span></div>
+        <div class="feat">Appointments on App <span class="material-symbols-outlined v yes">check</span></div>
+        <div class="feat">Appointments on Web <span class="material-symbols-outlined v no">close</span></div>
+        <div class="feat">Patients Management <span class="material-symbols-outlined v yes">check</span></div>
+        <div class="feat">Physician Consultation Schedule <span class="material-symbols-outlined v yes">check</span></div>
+        <div class="feat">Physician Holiday Calendar <span class="material-symbols-outlined v yes">check</span></div>
+        <div class="feat">Physician Blog <span class="material-symbols-outlined v no">close</span></div>
+        <div class="feat">Prescription on Image <span class="material-symbols-outlined v yes">check</span></div>
+        <div class="feat">Prescription on Pre Printed Stationary <span class="material-symbols-outlined v yes">check</span></div>
+        <div class="feat">Prescription on System Format <span class="material-symbols-outlined v yes">check</span></div>
+        <div class="feat">Prescription on WhatsApp <span class="material-symbols-outlined v no">close</span></div>
+        <div class="feat">Business Card on WhatsApp <span class="material-symbols-outlined v no">close</span></div>
+        <div class="feat">WhatsApp Reminders <span class="material-symbols-outlined v no">close</span></div>
+      </div>
+    </div>
+
+    <!-- MONTHLY -->
+    <div class="card rounded-3xl p-8 flex flex-col relative border-2 border-[#006c48]" style="background:linear-gradient(180deg,#fff 0%,#eff4ff 100%)">
+      <div class="absolute -top-4 left-1/2 -translate-x-1/2 grad-primary text-white text-xs font-bold px-4 py-1.5 rounded-full">MOST POPULAR</div>
+      <div class="chip bg-[#62fdb9]/40 text-[#00734d] self-start mb-4">Monthly</div>
+      <h3 class="font-head font-extrabold text-2xl">Premium Monthly</h3>
+      <p class="text-slate-500 text-sm mt-1">Full access, billed monthly.</p>
+      <div class="mt-6 mb-2">
+        <div class="font-head font-extrabold text-5xl">₹2,124<span class="text-lg text-slate-500 font-semibold">/mo</span></div>
+        <div class="text-slate-500 text-sm mt-1">With GST: ₹2124.00 · HSN:997331</div>
+      </div>
+      <button data-action="subscribe" data-plan="Monthly - Stethescope Premium" data-price="₹2,124" class="mt-6 w-full py-3 rounded-xl grad-primary text-white font-bold hover:opacity-90">Buy Now</button>
+      <div class="mt-8">
+        <div class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-3">Features</div>
+        <div class="feat">Maximum Medical Facilities <span class="v yes">Unlimited</span></div>
+        <div class="feat">Maximum Patients <span class="v yes">Unlimited</span></div>
+        <div class="feat">Maximum Clinic Staff <span class="v yes">Unlimited</span></div>
+        <div class="feat">Appointments on App <span class="material-symbols-outlined v yes">check</span></div>
+        <div class="feat">Appointments on Web <span class="material-symbols-outlined v yes">check</span></div>
+        <div class="feat">Patients Management <span class="material-symbols-outlined v yes">check</span></div>
+        <div class="feat">Physician Consultation Schedule <span class="material-symbols-outlined v yes">check</span></div>
+        <div class="feat">Physician Holiday Calendar <span class="material-symbols-outlined v yes">check</span></div>
+        <div class="feat">Physician Blog <span class="material-symbols-outlined v yes">check</span></div>
+        <div class="feat">Prescription on Image <span class="material-symbols-outlined v yes">check</span></div>
+        <div class="feat">Prescription on Pre Printed Stationary <span class="material-symbols-outlined v yes">check</span></div>
+        <div class="feat">Prescription on System Format <span class="material-symbols-outlined v yes">check</span></div>
+        <div class="feat">Prescription on WhatsApp <span class="material-symbols-outlined v yes">check</span></div>
+        <div class="feat">Business Card on WhatsApp <span class="material-symbols-outlined v yes">check</span></div>
+        <div class="feat">WhatsApp Reminders <span class="material-symbols-outlined v yes">check</span></div>
+      </div>
+    </div>
+
+    <!-- YEARLY -->
+    <div class="card rounded-3xl p-8 flex flex-col">
+      <div class="chip bg-[#c1c1ff]/50 text-[#08005E] self-start mb-4">Yearly · Save 8%</div>
+      <h3 class="font-head font-extrabold text-2xl">Premium Yearly</h3>
+      <p class="text-slate-500 text-sm mt-1">Best value. Billed once a year.</p>
+      <div class="mt-6 mb-2">
+        <div class="font-head font-extrabold text-5xl">₹23,364<span class="text-lg text-slate-500 font-semibold">/yr</span></div>
+        <div class="text-slate-500 text-sm mt-1">With GST: ₹23364.00 · HSN:997331</div>
+      </div>
+      <button data-action="subscribe" data-plan="Yearly - Stethescope Premium" data-price="₹23,364" class="mt-6 w-full py-3 rounded-xl border-2 border-[#08005E] text-[#08005E] font-bold hover:bg-[#08005E] hover:text-white transition-colors">Buy Now</button>
+      <div class="mt-8">
+        <div class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-3">Features</div>
+        <div class="feat">Maximum Medical Facilities <span class="v yes">Unlimited</span></div>
+        <div class="feat">Maximum Patients <span class="v yes">Unlimited</span></div>
+        <div class="feat">Maximum Clinic Staff <span class="v yes">Unlimited</span></div>
+        <div class="feat">Appointments on App <span class="material-symbols-outlined v yes">check</span></div>
+        <div class="feat">Appointments on Web <span class="material-symbols-outlined v yes">check</span></div>
+        <div class="feat">Patients Management <span class="material-symbols-outlined v yes">check</span></div>
+        <div class="feat">Physician Consultation Schedule <span class="material-symbols-outlined v yes">check</span></div>
+        <div class="feat">Physician Holiday Calendar <span class="material-symbols-outlined v yes">check</span></div>
+        <div class="feat">Physician Blog <span class="material-symbols-outlined v yes">check</span></div>
+        <div class="feat">Prescription on Image <span class="material-symbols-outlined v yes">check</span></div>
+        <div class="feat">Prescription on Pre Printed Stationary <span class="material-symbols-outlined v yes">check</span></div>
+        <div class="feat">Prescription on System Format <span class="material-symbols-outlined v yes">check</span></div>
+        <div class="feat">Prescription on WhatsApp <span class="material-symbols-outlined v yes">check</span></div>
+        <div class="feat">Business Card on WhatsApp <span class="material-symbols-outlined v yes">check</span></div>
+        <div class="feat">WhatsApp Reminders <span class="material-symbols-outlined v yes">check</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FAQ -->
+  <div class="mt-20 max-w-3xl mx-auto">
+    <h2 class="font-head font-extrabold text-3xl text-center mb-8">Frequently asked questions</h2>
+    <div class="space-y-3">
+      <details class="card rounded-xl p-5"><summary class="font-semibold cursor-pointer">Do I need a credit card to sign up?</summary><p class="text-slate-500 text-sm mt-3">No. The Free For Life plan needs no payment information. Sign up and start using Stethescope immediately.</p></details>
+      <details class="card rounded-xl p-5"><summary class="font-semibold cursor-pointer">Can I upgrade or downgrade anytime?</summary><p class="text-slate-500 text-sm mt-3">Yes. Change plans anytime from your dashboard. Pro-rated billing applies on upgrades.</p></details>
+      <details class="card rounded-xl p-5"><summary class="font-semibold cursor-pointer">What payment methods are supported?</summary><p class="text-slate-500 text-sm mt-3">UPI (GPay, PhonePe, Paytm), credit/debit cards, and net banking via Razorpay. GST invoices issued automatically.</p></details>
+      <details class="card rounded-xl p-5"><summary class="font-semibold cursor-pointer">Is my patient data secure?</summary><p class="text-slate-500 text-sm mt-3">Yes. All data is encrypted in transit and at rest. Hosted on Indian servers for compliance.</p></details>
+    </div>
+  </div>
+</section>
+
+<footer class="bg-[#0b1c30] text-white">
+  <div class="max-w-7xl mx-auto px-6 py-10 text-center text-sm text-white/60">© 2026 Stethescope · HSN:997331 · <a href="contact.html" class="text-white/80 hover:text-white">Contact</a></div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

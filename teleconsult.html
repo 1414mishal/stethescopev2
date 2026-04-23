@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tele-Consultation | Clinic OS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-bright": "#f8f9ff",
+                      "outline-variant": "#c7c5d3",
+                      "secondary": "#006c48",
+                      "surface-container": "#e5eeff",
+                      "secondary-fixed": "#62fdb9",
+                      "background": "#f8f9ff",
+                      "inverse-primary": "#c1c1ff",
+                      "on-secondary-fixed": "#002113",
+                      "on-primary-fixed-variant": "#3d3d8d",
+                      "inverse-surface": "#213145",
+                      "tertiary-fixed": "#b1ecff",
+                      "on-secondary-container": "#00734d",
+                      "on-primary-container": "#7b7bcf",
+                      "outline": "#777682",
+                      "on-primary": "#ffffff",
+                      "tertiary-fixed-dim": "#33d7fe",
+                      "surface-variant": "#d3e4fe",
+                      "on-background": "#0b1c30",
+                      "tertiary-container": "#001f27",
+                      "primary-fixed-dim": "#c1c1ff",
+                      "on-tertiary-fixed-variant": "#004e5e",
+                      "primary-container": "#0e0761",
+                      "surface": "#f8f9ff",
+                      "on-error": "#ffffff",
+                      "surface-container-high": "#dce9ff",
+                      "on-secondary-fixed-variant": "#005235",
+                      "on-tertiary-container": "#0090ac",
+                      "tertiary": "#000000",
+                      "surface-container-low": "#eff4ff",
+                      "error": "#ba1a1a",
+                      "surface-dim": "#cbdbf5",
+                      "primary": "#000000",
+                      "error-container": "#ffdad6",
+                      "secondary-container": "#62fdb9",
+                      "on-tertiary-fixed": "#001f27",
+                      "on-secondary": "#ffffff",
+                      "on-tertiary": "#ffffff",
+                      "on-surface-variant": "#464651",
+                      "surface-tint": "#5555a7",
+                      "primary-fixed": "#e2dfff",
+                      "inverse-on-surface": "#eaf1ff",
+                      "surface-container-lowest": "#ffffff",
+                      "on-surface": "#0b1c30",
+                      "on-primary-fixed": "#0e0761",
+                      "surface-container-highest": "#d3e4fe",
+                      "secondary-fixed-dim": "#3ee09f",
+                      "on-error-container": "#93000a"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "sm": "12px",
+                      "xs": "4px",
+                      "base": "8px",
+                      "xl": "80px",
+                      "grid-margin": "32px",
+                      "md": "24px",
+                      "grid-gutter": "24px",
+                      "lg": "48px"
+              },
+              "fontFamily": {
+                      "data-tabular": ["Inter"],
+                      "headline-md": ["Manrope"],
+                      "display-lg": ["Manrope"],
+                      "label-sm": ["Inter"],
+                      "headline-lg": ["Manrope"],
+                      "body-md": ["Inter"],
+                      "body-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "data-tabular": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+          font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+          font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for clinical feel */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c7c5d3;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #777682;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background h-screen flex flex-col overflow-hidden antialiased">
+<!-- NavigationDrawer (Web) -->
+<nav class="hidden lg:flex flex-col fixed left-0 top-0 h-screen p-6 z-[60] bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 w-72">
+<div class="mb-8">
+<h2 class="font-manrope font-semibold tracking-tight text-lg font-extrabold text-[#08005E] dark:text-blue-200">Clinic OS</h2>
+</div>
+<ul class="flex flex-col gap-2 font-manrope text-sm font-medium">
+<li><a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 hover:bg-slate-50 transition-colors" href="dashboard.html"><span class="material-symbols-outlined">dashboard</span>Dashboard</a></li>
+<li><a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 hover:bg-slate-50 transition-colors" href="patients.html"><span class="material-symbols-outlined">group</span>Patients</a></li>
+<li><a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 hover:bg-slate-50 transition-colors" href="prescription.html"><span class="material-symbols-outlined">edit_note</span>Prescriptions</a></li>
+<li><a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-slate-50 text-[#08005E] font-bold border-r-4 border-[#08005E]" href="teleconsult.html"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">videocam</span>Tele-Consult</a></li>
+<li><a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 hover:bg-slate-50 transition-colors" href="chronic-care.html"><span class="material-symbols-outlined">monitor_heart</span>Chronic Care</a></li>
+<li><a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 hover:bg-slate-50 transition-colors" href="calendar.html"><span class="material-symbols-outlined">calendar_month</span>Calendar</a></li>
+<li><a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 hover:bg-slate-50 transition-colors" href="revenue.html"><span class="material-symbols-outlined">payments</span>Revenue</a></li>
+<li><a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 hover:bg-slate-50 transition-colors" href="profile.html"><span class="material-symbols-outlined">account_circle</span>Profile</a></li>
+</ul>
+</nav>
+<div class="flex flex-col flex-1 lg:ml-72 min-h-0">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 lg:left-72 right-0 z-50 flex justify-between items-center px-6 h-16 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-sm transition-all duration-200 ease-in-out">
+<div class="flex items-center gap-base">
+<a href="dashboard.html" class="material-symbols-outlined text-[#08005E] dark:text-blue-200 cursor-pointer" data-icon="arrow_back">arrow_back</a>
+<a href="dashboard.html" class="font-manrope font-semibold tracking-tight text-lg font-extrabold text-[#08005E] dark:text-blue-200">
+                Clinic OS
+            </a>
+</div>
+<div class="flex items-center gap-md">
+<div class="flex items-center gap-sm">
+<span class="w-2 h-2 rounded-full bg-secondary-container animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-outline">Live Consultation</span>
+</div>
+<div class="relative w-8 h-8 rounded-full overflow-hidden border border-outline-variant cursor-pointer">
+<img alt="Physician Profile Photo" class="w-full h-full object-cover" data-alt="professional headshot of a male physician in a white coat against a clean light grey background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMstYpZX_oDDvHKL-ZeiDQxbFXvd6NlpZgfXQWJacQGGkmOFnykrKYJHOp24wr5BfL62RIvnkj_XCK6Ig8VksDxEsw28AHKilS89dgDlghrnWxf7_uvEbq6oZaea4HWVr7L7MHku0Md-Rdcel2Lay4cIYWAOSaBUUj8e1IDSsH0QVCe9Y4eathkv-9EtO4Rw2tko4u1FrG15YNKfnOTvMOq9H2DeeyEpfYyUlnH6WJAYN2woCU3tqpYjXypxw2Gfvkv7orjk2criA"/>
+</div>
+</div>
+</header>
+<!-- Main Content: Split Screen Layout -->
+<main class="flex-1 flex flex-col md:flex-row mt-16 overflow-hidden h-[calc(100vh-64px)]">
+<!-- Top Half (Mobile) / Left Side (Desktop): Video Call -->
+<section class="relative w-full h-1/2 md:h-full md:flex-1 bg-tertiary-container flex flex-col justify-center items-center overflow-hidden">
+<!-- Main Patient Video Feed -->
+<img alt="Patient Video Feed" class="absolute inset-0 w-full h-full object-cover opacity-90" data-alt="medium shot of a young woman looking directly at the camera, softly lit indoor setting, acting as a patient on a video call" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChWwFut5jA9Sue4kar9IXD7ALZo83du-J1_CoaLpiGtDD59DpKDZOu1q5x79ZqPba7qryldZUIqc0PJGHwMfWGHqrgzxMIuZ95qDjYbVKtJq8HTGK5km-qoNi9zQFOBOSLz_MJPvte1ugGij-6oZNYRvrjiKT9Xul6BN-Ua4VgVMUB8z0sTIlGkmyOG5nR8uN2PZGUw-w_7eu84vBeAQn0-HiMJ0_rVSYdQOMGeSVCYz70GPmZ8NdI5uUOU6Xei9Z-2C1-NSNqixQ"/>
+<!-- Video Overlay Gradients for readability -->
+<div class="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60 pointer-events-none"></div>
+<!-- Top Left: Patient Name overlay -->
+<div class="absolute top-md left-md flex items-center gap-base bg-surface/20 backdrop-blur-md px-sm py-xs rounded-full border border-white/10">
+<span class="material-symbols-outlined text-white text-[18px]" data-icon="videocam">videocam</span>
+<span class="font-label-sm text-label-sm text-white">Sarah Jenkins</span>
+</div>
+<!-- Top Right: Physician PiP (Picture in Picture) -->
+<div class="absolute top-md right-md w-24 h-32 md:w-32 md:h-48 rounded-xl overflow-hidden border-2 border-surface/50 shadow-lg z-10 bg-surface">
+<img alt="Physician Camera" class="w-full h-full object-cover" data-alt="professional headshot of a male physician in a white coat looking at camera" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgbPmHaN2qv1W9_YAEH6zoKF8WM58E72s9flChgkuuT4HWo9GHoiF7lWcNUQ3Y15MqvoBUJ9aZGpErD6n5-d14SYkBVhmR_XDx5Com0tDQKHVFcNhgUej3Kgkp5AKyFdY1NM4rhb-Iqw6duXMz8Sk55VYOAa7xWGQizS7m6kwnvfLpvEdpQ2ENH7_ht6cvME3WQICxrmNpQbhvFpB7AZ0PScy8TH5MxqQj8Oq85WjzTYmcofGtPEPmhnjem7S_DcpjrAo4pcGf7cw"/>
+<div class="absolute bottom-1 left-2">
+<span class="font-label-sm text-[10px] text-white drop-shadow-md">You</span>
+</div>
+</div>
+<!-- Bottom Center: Floating Action Buttons (FABs) -->
+<div class="absolute bottom-lg left-1/2 transform -translate-x-1/2 flex items-center gap-grid-gutter z-20">
+<!-- Mute FAB -->
+<button class="flex flex-col items-center gap-xs group">
+<div class="w-14 h-14 rounded-full bg-surface-container-high/80 backdrop-blur-md flex justify-center items-center text-on-surface group-hover:bg-surface-container transition-colors border border-outline-variant/30 shadow-lg">
+<span class="material-symbols-outlined text-[24px]" data-icon="mic">mic</span>
+</div>
+</button>
+<!-- End Call FAB (Primary Action) -->
+<button class="flex flex-col items-center gap-xs group">
+<div class="w-16 h-16 rounded-full bg-error flex justify-center items-center text-on-error hover:bg-[#a31616] transition-colors shadow-lg hover:scale-105 transform duration-200">
+<span class="material-symbols-outlined text-[28px]" data-icon="call_end">call_end</span>
+</div>
+</button>
+<!-- Quick Note FAB -->
+<button class="flex flex-col items-center gap-xs group">
+<div class="w-14 h-14 rounded-full bg-primary-container/90 backdrop-blur-md flex justify-center items-center text-on-primary-container hover:bg-primary-container transition-colors shadow-lg">
+<span class="material-symbols-outlined text-[24px]" data-icon="edit_note">edit_note</span>
+</div>
+</button>
+</div>
+</section>
+<!-- Bottom Half (Mobile) / Right Side (Desktop): Patient Context -->
+<section class="w-full h-1/2 md:h-full md:w-[480px] bg-surface-bright border-t md:border-t-0 md:border-l border-outline-variant flex flex-col">
+<!-- Context Header (Sticky) -->
+<div class="p-md border-b border-surface-variant bg-surface-bright/95 backdrop-blur z-10 sticky top-0 flex justify-between items-start">
+<div>
+<h1 class="font-headline-md text-headline-md text-on-surface">Sarah Jenkins</h1>
+<div class="flex items-center gap-sm mt-xs">
+<span class="font-data-tabular text-data-tabular text-outline">Female, 32</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="font-data-tabular text-data-tabular text-outline">DOB: 05/14/1991</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="font-data-tabular text-data-tabular text-outline">ID: #PT-8829</span>
+</div>
+</div>
+<button class="p-2 rounded-lg hover:bg-surface-container text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto p-md space-y-grid-gutter">
+<!-- Chief Complaint -->
+<div class="bg-surface rounded-xl p-sm border border-outline-variant shadow-sm">
+<div class="flex items-center gap-xs mb-sm">
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]" data-icon="assignment_late">assignment_late</span>
+<h3 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Chief Complaint</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+                        Patient reports persistent migraine localized to the right temporal region, lasting for 3 days. Accompanied by mild photophobia and nausea. Over-the-counter ibuprofen (400mg) provided minimal relief.
+                    </p>
+</div>
+<!-- Vitals Bento Grid -->
+<div>
+<div class="flex items-center gap-xs mb-sm">
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]" data-icon="monitor_heart">monitor_heart</span>
+<h3 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Latest Vitals (Self-Reported)</h3>
+</div>
+<div class="grid grid-cols-2 gap-sm">
+<!-- BP Card -->
+<div class="bg-surface rounded-lg p-sm border border-outline-variant flex flex-col justify-between">
+<span class="font-label-sm text-label-sm text-outline">Blood Pressure</span>
+<div class="flex items-baseline gap-xs mt-xs">
+<span class="font-headline-md text-headline-md text-on-surface">118/76</span>
+<span class="font-data-tabular text-data-tabular text-outline">mmHg</span>
+</div>
+<div class="flex items-center gap-xs mt-xs">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-label-sm text-[10px] text-secondary">Normal</span>
+</div>
+</div>
+<!-- Heart Rate Card -->
+<div class="bg-surface rounded-lg p-sm border border-outline-variant flex flex-col justify-between">
+<span class="font-label-sm text-label-sm text-outline">Heart Rate</span>
+<div class="flex items-baseline gap-xs mt-xs">
+<span class="font-headline-md text-headline-md text-on-surface">72</span>
+<span class="font-data-tabular text-data-tabular text-outline">bpm</span>
+</div>
+<div class="flex items-center gap-xs mt-xs">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-label-sm text-[10px] text-secondary">Resting</span>
+</div>
+</div>
+<!-- Temp Card (Alert) -->
+<div class="bg-error-container/20 rounded-lg p-sm border border-error/30 flex flex-col justify-between col-span-2">
+<div class="flex justify-between items-center">
+<span class="font-label-sm text-label-sm text-on-error-container">Temperature</span>
+<span class="material-symbols-outlined text-error text-[16px]" data-icon="warning">warning</span>
+</div>
+<div class="flex items-baseline gap-xs mt-xs">
+<span class="font-headline-md text-headline-md text-error">99.8</span>
+<span class="font-data-tabular text-data-tabular text-on-error-container">°F</span>
+</div>
+<div class="mt-xs">
+<span class="font-label-sm text-[10px] text-on-error-container">Slightly elevated, monitor.</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Current Medications -->
+<div>
+<div class="flex items-center gap-xs mb-sm">
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]" data-icon="pill">pill</span>
+<h3 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Active Prescriptions</h3>
+</div>
+<div class="space-y-xs">
+<div class="flex items-center justify-between p-sm bg-surface rounded-lg border border-surface-variant">
+<div>
+<div class="font-data-tabular text-data-tabular text-on-surface font-semibold">Sumatriptan</div>
+<div class="font-label-sm text-[11px] text-outline">50mg • As needed for migraine</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="chevron_right">chevron_right</span>
+</div>
+<div class="flex items-center justify-between p-sm bg-surface rounded-lg border border-surface-variant">
+<div>
+<div class="font-data-tabular text-data-tabular text-on-surface font-semibold">Sertraline</div>
+<div class="font-label-sm text-[11px] text-outline">50mg • Once daily</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Quick Notes Input Area (Sticky Bottom of scroll area) -->
+<div class="mt-lg pt-sm border-t border-outline-variant pb-md">
+<label class="font-label-sm text-label-sm text-on-surface-variant mb-xs block">Quick Consultation Notes</label>
+<div class="relative">
+<textarea class="w-full bg-surface border border-outline-variant rounded-lg p-sm font-body-md text-body-md text-on-surface focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary resize-none h-24 placeholder-outline" placeholder="Type notes here..."></textarea>
+<button class="absolute bottom-2 right-2 p-1.5 bg-surface-container rounded hover:bg-surface-variant text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="mic">mic</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+<!-- BottomNavBar (Mobile) -->
+<nav class="lg:hidden fixed bottom-0 left-0 w-full h-16 flex justify-around items-center px-4 z-[60] bg-white border-t border-slate-200 shadow-[0_-4px_20px_rgba(8,0,94,0.04)] rounded-t-2xl font-manrope text-[10px] font-semibold uppercase tracking-wider">
+<a class="flex flex-col items-center justify-center text-slate-400 w-16 h-full" href="dashboard.html"><span class="material-symbols-outlined mb-1">dashboard</span>Home</a>
+<a class="flex flex-col items-center justify-center text-slate-400 w-16 h-full" href="patients.html"><span class="material-symbols-outlined mb-1">person_search</span>Patients</a>
+<a class="flex flex-col items-center justify-center text-slate-400 w-16 h-full" href="prescription.html"><span class="material-symbols-outlined mb-1">edit_note</span>Scripts</a>
+<a class="flex flex-col items-center justify-center text-slate-400 w-16 h-full" href="calendar.html"><span class="material-symbols-outlined mb-1">calendar_month</span>Calendar</a>
+<a class="flex flex-col items-center justify-center text-slate-400 w-16 h-full" href="profile.html"><span class="material-symbols-outlined mb-1">menu</span>More</a>
+</nav>
+</body></html>

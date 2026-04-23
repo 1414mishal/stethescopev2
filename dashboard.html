@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Physician Dashboard - Stethescope</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#d3e4fe",
+                        "secondary-fixed-dim": "#3ee09f",
+                        "on-error-container": "#93000a",
+                        "on-surface": "#0b1c30",
+                        "on-primary-fixed": "#0e0761",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "on-surface-variant": "#464651",
+                        "primary-fixed": "#e2dfff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "surface-tint": "#5555a7",
+                        "on-secondary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "secondary-container": "#62fdb9",
+                        "on-tertiary-fixed": "#001f27",
+                        "surface-dim": "#cbdbf5",
+                        "primary": "#000000",
+                        "surface-container-low": "#eff4ff",
+                        "error": "#ba1a1a",
+                        "on-tertiary-container": "#0090ac",
+                        "surface-container-high": "#dce9ff",
+                        "on-secondary-fixed-variant": "#005235",
+                        "tertiary": "#000000",
+                        "tertiary-container": "#001f27",
+                        "primary-fixed-dim": "#c1c1ff",
+                        "on-tertiary-fixed-variant": "#004e5e",
+                        "surface": "#f8f9ff",
+                        "on-error": "#ffffff",
+                        "primary-container": "#0e0761",
+                        "on-background": "#0b1c30",
+                        "on-secondary-container": "#00734d",
+                        "on-primary-container": "#7b7bcf",
+                        "tertiary-fixed-dim": "#33d7fe",
+                        "surface-variant": "#d3e4fe",
+                        "outline": "#777682",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed-variant": "#3d3d8d",
+                        "inverse-surface": "#213145",
+                        "tertiary-fixed": "#b1ecff",
+                        "surface-container": "#e5eeff",
+                        "secondary-fixed": "#62fdb9",
+                        "background": "#f8f9ff",
+                        "secondary": "#006c48",
+                        "on-secondary-fixed": "#002113",
+                        "inverse-primary": "#c1c1ff",
+                        "surface-bright": "#f8f9ff",
+                        "outline-variant": "#c7c5d3"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "base": "8px",
+                        "sm": "12px",
+                        "lg": "48px",
+                        "xl": "80px",
+                        "grid-margin": "32px",
+                        "md": "24px",
+                        "grid-gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "headline-lg": ["Manrope"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Manrope"],
+                        "display-lg": ["Manrope"],
+                        "data-tabular": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "data-tabular": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-24 md:pb-0 flex flex-col md:flex-row antialiased">
+<!-- TopAppBar -->
+<header class="bg-white/80 dark:bg-slate-950/80 backdrop-blur-md shadow-sm dark:shadow-none flex justify-between items-center w-full px-6 py-4 sticky top-0 z-50 border-b border-slate-200 dark:border-slate-800 md:hidden">
+<div class="flex items-center gap-4">
+<button class="text-[#08005E] dark:text-white hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">menu</span>
+</button>
+<span class="font-headline-md text-headline-md font-extrabold text-[#08005E] dark:text-teal-400">Stethescope</span>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden border border-outline-variant">
+<img alt="Dr. Julian Vance" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWouodrVNmtYhOWZ5XvLXGTJfSXk6pS0_ZzZBs_bxGXRenSdz8RxZ6mWwKsc2H7VxQODYok4CFE6Vl-XE_ClPkwMW8LpGFf0vpfCUdrludYXOWDvZgs_-iwym9yJkcr4dyZPL7v_gjd0eIBS0_5P35oJyzzrKe2pM4dMP5zUMbeskfCH33wkfFG2Hret7bR1i0QvmlONQqHz7RTNviSBCi7ZyXChNUdpZh1x8NY8sR4gu7MnzXGmDHX6xRvipTDDpFEsfAPML6Wtc"/>
+</div>
+</header>
+<!-- NavigationDrawer (Web) -->
+<nav class="hidden lg:flex flex-col fixed left-0 top-0 h-screen p-6 z-40 bg-slate-50 dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 w-72">
+<div class="mb-8 flex items-center gap-3">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest overflow-hidden border border-outline-variant">
+<img alt="Dr. Julian Vance" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_yr2pYm5McRsDRqpEJyirBzxaYHVtlSEf02dfTeAicaDtqzF5-T47AOyyBO7fJeVxHE8K3LYC7GS6TT3nT4wxzakve-yN3pxiOh3-LtiT0J-ej21diG4tLnrP9KSIPpzKV112thgHfrgD_koIeuW2lyTG6VyoZPzgNBqMrjlxlkl6mjFR9HEw8paLnNxKOE6P_E5olIz4wXaQLxq_TdhqArM9d-_EGvIOHoKS4V7Ryo3QyjmB06l32hKgCkY9XaWYZcc83lVfUkM"/>
+</div>
+<div>
+<h2 class="font-headline-lg text-body-md font-bold text-[#08005E] dark:text-indigo-300">Dr. Julian Vance</h2>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Chief of Surgery</p>
+<p class="font-label-sm text-[10px] text-outline">General Hospital</p>
+</div>
+</div>
+<ul class="flex flex-col gap-2 font-manrope text-sm font-medium">
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-white dark:bg-slate-800 text-teal-600 dark:text-teal-400 font-bold border-r-4 border-teal-600 shadow-sm transition-colors duration-200" href="dashboard.html">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+                    Dashboard
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-colors duration-200" href="patients.html">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">group</span>
+                    Patients
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-colors duration-200" href="prescription.html">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">edit_note</span>
+                    Prescriptions
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-colors duration-200" href="teleconsult.html">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">videocam</span>
+                    Tele-Consult
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-colors duration-200" href="chronic-care.html">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">monitor_heart</span>
+                    Chronic Care
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-colors duration-200" href="calendar.html">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">calendar_month</span>
+                    Calendar
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-colors duration-200" href="revenue.html">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">payments</span>
+                    Revenue
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-colors duration-200" href="profile.html">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">account_circle</span>
+                    Profile
+                </a>
+</li>
+</ul>
+</nav>
+<!-- Main Content -->
+<main class="flex-1 lg:ml-72 p-md md:p-grid-margin w-full max-w-7xl mx-auto space-y-md">
+<!-- Welcome Section -->
+<section class="mb-lg">
+<h1 class="font-headline-lg text-headline-lg text-on-background">Good morning, Dr. Vance</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-2">Here's your clinical overview for today.</p>
+</section>
+<!-- Quick Actions Bento -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-grid-gutter mb-lg">
+<button class="bg-gradient-to-br from-[#1A237E] to-[#08005E] text-white p-6 rounded-xl shadow-sm hover:opacity-90 transition-opacity flex items-center justify-between group">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center backdrop-blur-sm">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 0;">edit_note</span>
+</div>
+<div class="text-left">
+<h3 class="font-headline-md text-body-lg font-semibold text-white">New Prescription</h3>
+<p class="font-body-md text-sm text-white/80">Issue to patient</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-white/50 group-hover:text-white transition-colors">arrow_forward</span>
+</button>
+<button class="bg-surface-container-lowest border-2 border-secondary-container text-on-surface p-6 rounded-xl shadow-[0_4px_20px_rgba(8,0,94,0.04)] hover:bg-surface-container-low transition-colors flex items-center justify-between group">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-secondary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary-fixed-dim" style="font-variation-settings: 'FILL' 0;">person_add</span>
+</div>
+<div class="text-left">
+<h3 class="font-headline-md text-body-lg font-semibold text-on-surface">Add Patient</h3>
+<p class="font-body-md text-sm text-on-surface-variant">Register new profile</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-on-surface transition-colors">arrow_forward</span>
+</button>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-grid-gutter">
+<!-- Today's Appointments (Glassmorphism Card) -->
+<section class="lg:col-span-2 relative overflow-hidden rounded-xl border border-outline-variant bg-white/60 backdrop-blur-xl shadow-[0_4px_24px_rgba(8,0,94,0.06)] p-6">
+<!-- Decorative blurred shapes -->
+<div class="absolute -top-10 -right-10 w-32 h-32 bg-primary-fixed-dim rounded-full mix-blend-multiply filter blur-2xl opacity-50"></div>
+<div class="absolute -bottom-10 -left-10 w-32 h-32 bg-secondary-fixed rounded-full mix-blend-multiply filter blur-2xl opacity-30"></div>
+<div class="relative z-10">
+<div class="flex justify-between items-center mb-6 pb-4 border-b border-outline-variant/50">
+<h2 class="font-headline-md text-headline-md text-on-background flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 0;">calendar_today</span>
+                            Today's Appointments
+                        </h2>
+<span class="font-label-sm text-label-sm bg-surface-container-high text-on-surface px-3 py-1 rounded-full">3 Remaining</span>
+</div>
+<div class="space-y-4">
+<!-- Appointment Item -->
+<div class="flex items-start gap-4 p-4 rounded-lg bg-surface hover:bg-surface-container-low transition-colors border border-transparent hover:border-outline-variant/30">
+<div class="flex flex-col items-center justify-center w-16 h-16 rounded-lg bg-surface-container-highest text-primary-container font-data-tabular">
+<span class="text-lg font-bold">10:30</span>
+<span class="text-xs uppercase">AM</span>
+</div>
+<div class="flex-1">
+<h3 class="font-body-lg text-body-lg font-semibold text-on-surface">Sarah Jenkins</h3>
+<p class="font-body-md text-body-md text-on-surface-variant flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 0;">info</span>
+                                    Post-operative checkup
+                                </p>
+</div>
+<button class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center text-primary-container hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 0;">chevron_right</span>
+</button>
+</div>
+<!-- Appointment Item -->
+<div class="flex items-start gap-4 p-4 rounded-lg bg-surface hover:bg-surface-container-low transition-colors border border-transparent hover:border-outline-variant/30">
+<div class="flex flex-col items-center justify-center w-16 h-16 rounded-lg bg-surface-container-highest text-primary-container font-data-tabular">
+<span class="text-lg font-bold">11:15</span>
+<span class="text-xs uppercase">AM</span>
+</div>
+<div class="flex-1">
+<h3 class="font-body-lg text-body-lg font-semibold text-on-surface">Michael Chang</h3>
+<p class="font-body-md text-body-md text-on-surface-variant flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 0;">info</span>
+                                    Hypertension review
+                                </p>
+</div>
+<button class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center text-primary-container hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 0;">chevron_right</span>
+</button>
+</div>
+</div>
+<button class="mt-6 w-full py-3 font-label-sm text-label-sm text-primary-container hover:text-on-primary-fixed transition-colors flex items-center justify-center gap-2">
+                        View All Appointments
+                        <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 0;">arrow_forward</span>
+</button>
+</div>
+</section>
+<!-- Recent Activity -->
+<section class="bg-surface-container-lowest rounded-xl shadow-[0_4px_20px_rgba(8,0,94,0.04)] border border-outline-variant p-6 flex flex-col h-full">
+<div class="flex justify-between items-center mb-6 pb-4 border-b border-outline-variant">
+<h2 class="font-headline-md text-body-lg font-semibold text-on-background flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-fixed-dim" style="font-variation-settings: 'FILL' 0;">history</span>
+                        Recent Activity
+                    </h2>
+</div>
+<div class="flex-1 space-y-6">
+<!-- Activity Item -->
+<div class="relative pl-6 border-l-2 border-surface-container-highest pb-6 last:pb-0 last:border-transparent">
+<div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-secondary-container border-2 border-white"></div>
+<h4 class="font-body-md text-sm font-semibold text-on-surface">Amoxicillin 500mg</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">Issued to Emma Watson</p>
+<p class="font-data-tabular text-xs text-outline mt-2">2 hours ago</p>
+</div>
+<!-- Activity Item -->
+<div class="relative pl-6 border-l-2 border-surface-container-highest pb-6 last:pb-0 last:border-transparent">
+<div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-primary-fixed-dim border-2 border-white"></div>
+<h4 class="font-body-md text-sm font-semibold text-on-surface">Lisinopril 10mg</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">Refill approved for Robert King</p>
+<p class="font-data-tabular text-xs text-outline mt-2">Yesterday, 4:15 PM</p>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="lg:hidden fixed bottom-0 left-0 w-full h-16 flex justify-around items-center px-4 z-50 bg-white dark:bg-slate-950 border-t border-slate-100 dark:border-slate-800 shadow-[0_-4px_20px_rgba(8,0,94,0.04)] rounded-t-2xl">
+<a class="flex flex-col items-center justify-center text-teal-600 dark:text-teal-400 active:bg-slate-50 dark:active:bg-slate-900 transform scale-95 transition-all w-16 h-full font-manrope text-[10px] font-semibold uppercase tracking-wider" href="dashboard.html">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+            Home
+        </a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-600 active:bg-slate-50 dark:active:bg-slate-900 transition-all w-16 h-full font-manrope text-[10px] font-semibold uppercase tracking-wider" href="patients.html">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">person_search</span>
+            Patients
+        </a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-600 active:bg-slate-50 dark:active:bg-slate-900 transition-all w-16 h-full font-manrope text-[10px] font-semibold uppercase tracking-wider" href="prescription.html">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">edit_note</span>
+            Scripts
+        </a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-600 active:bg-slate-50 dark:active:bg-slate-900 transition-all w-16 h-full font-manrope text-[10px] font-semibold uppercase tracking-wider" href="calendar.html">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">calendar_month</span>
+            Calendar
+        </a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-600 active:bg-slate-50 dark:active:bg-slate-900 transition-all w-16 h-full font-manrope text-[10px] font-semibold uppercase tracking-wider" href="profile.html">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">menu</span>
+            More
+        </a>
+</nav>
+</body></html>
